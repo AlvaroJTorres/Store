@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show, edit, update, destroy]
+  before_action :set_product, only: %i[show edit update destroy]
+  
   def index
     if params[:term]
       @products = Product.search_by(params[:term])
@@ -8,8 +9,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new
@@ -25,11 +25,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    if @product = Product.update(product_params)
+    if @product.update(product_params)
       redirect_to products_path
     else
       render :edit
