@@ -9,4 +9,12 @@ class Product < ApplicationRecord
   def self.search_by(term)
     where('name LIKE ?', "%#{term}%")
   end
+
+  def liked_by?(current_user)
+    likes.where(user_id: current_user.id).exists?
+  end
+
+  def find_like(current_user)
+    likes.find_by(user_id: current_user.id)
+  end
 end
