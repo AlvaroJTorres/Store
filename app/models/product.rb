@@ -5,4 +5,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :stock, presence: true, numericality: { greater_than: 0 }
+
+  def self.search_by(term)
+    where('name LIKE ?', "%#{term}%")
+  end
 end
