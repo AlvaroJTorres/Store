@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  validates :first_name, :last_name, :address, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :address, presence: true, numericality: true, length: { is: 9 }
+
+  enum role: { customer: 0, admin: 1 }
 end
