@@ -1,102 +1,102 @@
 [
   {
-    "name": "Doritos",
+    "name": "doritos",
     "description": "Flavored tortilla chips",
     "price": 7.00,
     "stock": 50
   },
   {
-    "name": "Pringles",
+    "name": "pringles",
     "description": "Stackable potato-based crisps",
     "price": 22.00,
     "stock": 25
   },
   {
-    "name": "Lay's",
+    "name": "lay's",
     "description": "Potato chips",
     "price": 4.00,
     "stock": 70
   },
   {
-    "name": "Takis",
+    "name": "takis",
     "description": "Rolled, corn tortilla chip",
     "price": 12.00,
     "stock": 30
   },
   {
-    "name": "Ruffles",
+    "name": "ruffles",
     "description": "Ruffled (crinkle-cut) potato chips",
     "price": 18.00,
     "stock": 60
   },
   {
-    "name": "Coca Cola",
+    "name": "coca cola",
     "description": "Carbonated soft drink",
     "price": 8.00,
     "stock": 50
   },
   {
-    "name": "Pepsi",
+    "name": "pepsi",
     "description": "Carbonated soft drink",
     "price": 7.50,
     "stock": 25
   },
   {
-    "name": "Dr Pepper",
+    "name": "dr pepper",
     "description": "Carbonated soft drink",
     "price": 6.50,
     "stock": 70
   },
   {
-    "name": "Mountain Dew",
+    "name": "mountain dew",
     "description": "Carbonated soft drink",
     "price": 9.50,
     "stock": 30
   },
   {
-    "name": "Sprite",
+    "name": "sprite",
     "description": "Carbonated soft drink",
     "price": 5.50,
     "stock": 60
   },
   {
-    "name": "Stella Artois",
+    "name": "stella artois",
     "description": "Pilsner beer",
     "price": 25.00,
     "stock": 50
   },
   {
-    "name": "Corona",
+    "name": "corona",
     "description": "Beer",
     "price": 12.50,
     "stock": 25
   },
   {
-    "name": "Heineken",
+    "name": "heineken",
     "description": "Pale lager beer",
     "price": 15.50,
     "stock": 70
   },
   {
-    "name": "Budweiser",
+    "name": "budweiser",
     "description": " American-style pale lager",
     "price": 13.50,
     "stock": 30
   },
   {
-    "name": "Guinness",
+    "name": "guinness",
     "description": " Irish dry stout",
     "price": 31.50,
     "stock": 60
   },
   {
-    "name": "Oreo",
+    "name": "oreo",
     "description": "Sandwich cookie",
     "price": 3.00,
     "stock": 50
   },
   {
-    "name": "Chips Ahoy!",
+    "name": "chips ahoy!",
     "description": " Chocolate chip cookie",
     "price": 2.50,
     "stock": 25
@@ -108,13 +108,13 @@
     "stock": 70
   },
   {
-    "name": "Ritz Crackers",
+    "name": "ritz crackers",
     "description": " Snack cracker",
     "price": 2.50,
     "stock": 30
   },
   {
-    "name": "Oreo thins",
+    "name": "oreo thins",
     "description": "Thinner sandwich cookie",
     "price": 3.50,
     "stock": 60
