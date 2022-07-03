@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "products#index"
 
-  resources :products
-  # resources :users, only: [:show, :edit, :update]
+  resources :products, shallow: true do
+    resources :likes, only: [:create, :destroy]
+  end
 end
