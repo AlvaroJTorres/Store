@@ -1,0 +1,11 @@
+<%= form_with model: @product do |form| %>
+
+  <%= form.label :price %>
+  <%= form.number_field :price %>
+
+  <%= form.label :stock %>
+  <%= form.number_field :stock %>
+  
+  
+  <%= form.submit "Update product" %>
+<% end %>
