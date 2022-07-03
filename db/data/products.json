@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Doritos",
+    "description": "Flavored tortilla chips",
+    "price": 7.00,
+    "stock": 50
+  },
+  {
+    "name": "Pringles",
+    "description": "Stackable potato-based crisps",
+    "price": 22.00,
+    "stock": 25
+  },
+  {
+    "name": "Lay's",
+    "description": "Potato chips",
+    "price": 4.00,
+    "stock": 70
+  },
+  {
+    "name": "Takis",
+    "description": "Rolled, corn tortilla chip",
+    "price": 12.00,
+    "stock": 30
+  },
+  {
+    "name": "Ruffles",
+    "description": "Ruffled (crinkle-cut) potato chips",
+    "price": 18.00,
+    "stock": 60
+  },
+  {
+    "name": "Coca Cola",
+    "description": "Carbonated soft drink",
+    "price": 8.00,
+    "stock": 50
+  },
+  {
+    "name": "Pepsi",
+    "description": "Carbonated soft drink",
+    "price": 7.50,
+    "stock": 25
+  },
+  {
+    "name": "Dr Pepper",
+    "description": "Carbonated soft drink",
+    "price": 6.50,
+    "stock": 70
+  },
+  {
+    "name": "Mountain Dew",
+    "description": "Carbonated soft drink",
+    "price": 9.50,
+    "stock": 30
+  },
+  {
+    "name": "Sprite",
+    "description": "Carbonated soft drink",
+    "price": 5.50,
+    "stock": 60
+  },
+  {
+    "name": "Stella Artois",
+    "description": "Pilsner beer",
+    "price": 25.00,
+    "stock": 50
+  },
+  {
+    "name": "Corona",
+    "description": "Beer",
+    "price": 12.50,
+    "stock": 25
+  },
+  {
+    "name": "Heineken",
+    "description": "Pale lager beer",
+    "price": 15.50,
+    "stock": 70
+  },
+  {
+    "name": "Budweiser",
+    "description": " American-style pale lager",
+    "price": 13.50,
+    "stock": 30
+  },
+  {
+    "name": "Guinness",
+    "description": " Irish dry stout",
+    "price": 31.50,
+    "stock": 60
+  },
+  {
+    "name": "Oreo",
+    "description": "Sandwich cookie",
+    "price": 3.00,
+    "stock": 50
+  },
+  {
+    "name": "Chips Ahoy!",
+    "description": " Chocolate chip cookie",
+    "price": 2.50,
+    "stock": 25
+  },
+  {
+    "name": "m&m's",
+    "description": "Multi-colored button-shaped chocolates",
+    "price": 5.00,
+    "stock": 70
+  },
+  {
+    "name": "Ritz Crackers",
+    "description": " Snack cracker",
+    "price": 2.50,
+    "stock": 30
+  },
+  {
+    "name": "Oreo thins",
+    "description": "Thinner sandwich cookie",
+    "price": 3.50,
+    "stock": 60
+  }
+]
