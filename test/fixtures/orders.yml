@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-07-02
+  user: one
+  total: MyString
+  status: 1
+
+two:
+  date: 2022-07-02
+  user: two
+  total: MyString
+  status: 1
