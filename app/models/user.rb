@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :address, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :address, presence: true, numericality: true, length: { is: 9 }
+  validates :phone, presence: true, numericality: true, length: { is: 9 }
 
   enum role: { customer: 0, admin: 1 }
 end
