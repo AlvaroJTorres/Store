@@ -8,4 +8,12 @@
 
 <% @products.each do |product| %>
   <p><%=product.name %></p>
+  <% if current_user %>
+    <% if product.liked_by? current_user %>
+      <%= button_to "Dislike?", product_like_path(product, product.find_like(current_user)), method: :delete %>
+    <% else %>
+      <%= button_to "Like?", product_likes_path(product), method: :post %>
+    <% end %>
+  <% end %>
+  
 <% end %>
