@@ -9,14 +9,18 @@ class OrderLinesController < ApplicationController
     redirect_to cart_path
   end
 
-  def updated
+  def update
     @order_item = @order.order_lines.find(params[:id])
     @order_item.update(order_line_params)
+
+    redirect_to cart_path
   end
 
   def destroy
     @order_item = @order.order_lines.find(params[:id])
     @order_item.destroy
+
+    redirect_to cart_path
   end
 
   private
