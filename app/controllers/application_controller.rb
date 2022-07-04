@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include Pundit
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
