@@ -9,4 +9,6 @@
     <%= form.number_field :quantity, value: order_line.quantity %>
     <%= form.submit "Update" %>
   <% end %>
+
+  <%= button_to "Delete item", order_line_path(order_line), method: :delete %>
 <% end %>
