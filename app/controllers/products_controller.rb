@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  
+  before_action :new_order_line, only: %i[index show]
+
   def index
     if params[:term]
       @products = Product.search_by(params[:term])
     else
       @products = Product.all
     end
+    
   end
 
   def show; end
@@ -48,5 +50,9 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def new_order_line
+    @order_line = current_order.order_lines.new
   end
 end
