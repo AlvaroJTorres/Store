@@ -2,9 +2,11 @@ class OrderLinesController < ApplicationController
   before_action :set_order
 
   def create
-    @order_item = @order.order_lines.new(order_line_params)
+    @order_item = @order.add_product(order_line_params)
     @order.save
     session[:order_id] = @order.id
+
+    redirect_to cart_path
   end
 
   def updated
