@@ -3,14 +3,16 @@
   <%= order_line.product.price %>
   <%= order_line.total %>
 
-  <%= form_with model: order_line do |form| %>
-    <%= form.hidden_field :product_id, value: order_line.product.id %>
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, value: order_line.quantity %>
-    <%= form.submit "Update" %>
-  <% end %>
+  <% if policy(order_line).update? %>
+    <%= form_with model: order_line do |form| %>
+      <%= form.hidden_field :product_id, value: order_line.product.id %>
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity, value: order_line.quantity %>
+      <%= form.submit "Update" %>
+    <% end %>
 
-  <%= button_to "Delete item", order_line_path(order_line), method: :delete %>
+    <%= button_to "Delete item", order_line_path(order_line), method: :delete %>
+  <% end %>
 <% end %>
 
 <%= current_order.total %>
