@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :products, shallow: true do
     resources :likes, only: [:create, :destroy]
   end
+  resources :order_lines
+
+  get 'cart', to: 'orders#show'
 end
