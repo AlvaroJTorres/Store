@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    authorize @product
 
     if @product.save
       redirect_to products_path
@@ -49,7 +50,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = authorize Product.find(params[:id])
   end
 
   def new_order_line
