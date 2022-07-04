@@ -17,4 +17,12 @@ class Product < ApplicationRecord
   def find_like(current_user)
     likes.find_by(user_id: current_user.id)
   end
+
+  def available_stock?(quantity)
+    self.stock >= quantity
+  end
+
+  def update_stock(quantity)
+    self[:stock] -= quantity
+  end
 end
