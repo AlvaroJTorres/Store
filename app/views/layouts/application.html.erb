@@ -21,6 +21,11 @@
           <li><p class="critics-navbar__message">Sign in to buy products</p></li>
           <li><%= link_to "Sign in", new_user_session_path, class: "btn btn--small btn--primary" %></li>
         <% end %>
+        <% if current_page? cart_path%>
+          <%= link_to "Back", :back %>
+        <% else %>
+          <%= link_to "Cart", cart_path %>
+        <% end %>
       </ul>
     </header>
     <main>
