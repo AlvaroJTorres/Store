@@ -1,6 +1,6 @@
 class OrderLinePolicy < ApplicationPolicy
   def create?
-    user&.customer?
+    user.nil? || user.customer?
   end
 
   def update?
