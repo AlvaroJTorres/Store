@@ -1,8 +1,11 @@
 class OrderLinesController < ApplicationController
   before_action :set_order
+  before_action :set_order_line, only: %i[update destroy]
 
   def create
-    @order_item = @order.add_product(order_line_params)
+    @order_line = @order.add_product(order_line_params)
+    authorize @order_line
+    
     @order.save
     session[:order_id] = @order.id
 
@@ -10,15 +13,13 @@ class OrderLinesController < ApplicationController
   end
 
   def update
-    @order_item = @order.order_lines.find(params[:id])
-    @order_item.update(order_line_params)
+    @order_line.update(order_line_params)
 
     redirect_to cart_path
   end
 
   def destroy
-    @order_item = @order.order_lines.find(params[:id])
-    @order_item.destroy
+    @order_line.destroy
 
     redirect_to cart_path
   end
@@ -30,5 +31,9 @@ class OrderLinesController < ApplicationController
 
   def set_order
     @order = current_order
+  end
+
+  def set_order_line
+    @order_line = authorize @order.order_lines.find(params[:id])
   end
 end
