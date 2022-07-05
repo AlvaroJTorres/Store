@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_010436) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_04_194659) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_010436) do
     t.index ["product_id"], name: "index_likes_on_product_id"
     t.index ["user_id", "product_id"], name: "index_likes_on_user_id_and_product_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.string "loggable_type"
+    t.bigint "loggable_id"
+    t.string "attr"
+    t.string "old_val"
+    t.string "new_val"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loggable_type", "loggable_id"], name: "index_logs_on_loggable"
   end
 
   create_table "order_lines", force: :cascade do |t|
