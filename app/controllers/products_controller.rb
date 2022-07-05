@@ -31,7 +31,11 @@ class ProductsController < ApplicationController
   def edit; end
 
   def update
-    if @product.update(product_params)
+    @product.changed_by = current_user
+    @product.stock = product_params[:stock]
+    @product.price = product_params[:price]
+
+    if @product.save
       redirect_to products_path
     else
       render :edit
