@@ -1,10 +1,7 @@
 class Order < ApplicationRecord
   before_save :set_total
-  # belongs_to :user
-  has_many :order_lines, dependent: :destroy
 
-  # validates :date, presence: true
-  # validates :total, presence: true, numericality: { greater_than: 0 }
+  has_many :order_lines, dependent: :destroy
 
   enum status: { recieved: 0, on_route: 1, delivered: 2 }
 
