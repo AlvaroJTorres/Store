@@ -16,20 +16,18 @@ class OrderLinesController < ApplicationController
 
       redirect_to cart_path
     else
-      if params[:term]
-        @products = Product.search_by(params[:term])
-      else
-        @products = Product.all
-      end
-      render "products/index"
+      flash[:warning] = "Not enough stock"
+
+      redirect_to products_path
     end
   end
 
   def update
     @order_line.quantity = order_line_params[:quantity]
     
-    @order_line.save
-
+    unless @order_line.save
+      flash[:warning] = "Not enough stock"
+    end
     redirect_to cart_path
   end
 
