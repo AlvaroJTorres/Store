@@ -26,9 +26,9 @@
       </ul>
       <p>
         <% if current_page? cart_path%>
-          <%= link_to "Back", :root %>
+          <h2 class="text-3xl"><%= link_to "Back", :root %></h2>
         <% else %>
-          <%= link_to "See Cart", cart_path %>
+          <h2 class="text-3xl"><%= link_to "See Cart", cart_path %></h2>
         <% end %>
       </p>
     </header>
