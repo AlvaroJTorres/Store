@@ -1,16 +1,21 @@
-<%= form_with model: @product do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+<div class="flex flex-col gap-4 p-2 border-2 items-center justify-center border-slate-300">
+  <div class="flex flex-col">
+    <%= form_with model: @product do |form| %>
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true %>
 
-  <%= form.label :description %>
-  <%= form.text_field :description %>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
 
-  <%= form.label :price %>
-  <%= form.number_field :price %>
+      <%= form.label :price %>
+      <%= form.number_field :price, required: true %>
 
-  <%= form.label :stock %>
-  <%= form.number_field :stock %>
-  
-  
-  <%= form.submit "Add product to list" %>
-<% end %>
+      <%= form.label :stock %>
+      <%= form.number_field :stock, required: true %>
+      
+      
+      <%= form.submit "Add product to list" %>
+    <% end %>
+  </div>
+  <%= link_to "Back", :back %>
+</div>

@@ -11,25 +11,29 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <header>
+  <body class="flex flex-col gap-6">
+    <header class="flex justify-around items-center p-3">
+      <h1 class="text-7xl"><%= link_to "SNACK STORE", root_path %></h1>
       <ul>
         <% if user_signed_in? %>
           <li><p>Welcome <%= current_user.first_name %></p></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
           <li><p class="critics-navbar__message">Sign in to buy products</p></li>
-          <li><%= link_to "Sign in", new_user_session_path, class: "btn btn--small btn--primary" %></li>
         <% end %>
+      </ul>
+      <p>
         <% if current_page? cart_path%>
           <%= link_to "Back", :root %>
         <% else %>
-          <%= link_to "Cart", cart_path %>
+          <%= link_to "See Cart", cart_path %>
         <% end %>
-      </ul>
+      </p>
     </header>
     <main>
+      <p class="text-4xl text-red-500"><%= flash[:warning] %></p>
       <%= yield %>
     </main>
   </body>
