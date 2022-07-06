@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 
   has_many :order_lines, dependent: :destroy
 
-  enum status: { recieved: 0, on_route: 1, delivered: 2 }
+  enum status: { in_process: 0, recieved: 1, on_route: 2, delivered: 3 }
 
   def add_product(params)
     current_order_line = order_lines.find_by(product_id: params[:product_id])

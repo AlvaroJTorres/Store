@@ -3,7 +3,7 @@ class SessionsController < Devise::SessionsController
 
   def after_login
     if current_user.customer?      
-      order = current_order
+      order = Order.find_by(user_id: current_user.id, status: "in_process") ? Order.find_by(user_id: current_user.id, status: "in_process") : current_order
       order.user_id = current_user.id
       order.save
       session[:order_id] = order.id

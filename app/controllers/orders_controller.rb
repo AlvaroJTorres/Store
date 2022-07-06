@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def update
     authorize @order
     @order.date = Time.now
+    @order.status = 1
     if @order.save
       @order.order_lines.each do |order_line|
         product = Product.find(order_line.product_id)
