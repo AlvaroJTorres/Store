@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def update
     authorize @order
+    @order.user_id = current_user.id if @order.user_id.nil?
     @order.date = Time.now
     @order.status = 1
     if @order.save
