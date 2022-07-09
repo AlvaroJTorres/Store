@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for Order Line
 class OrderLine < ApplicationRecord
   before_save :set_total
   after_update :update_total
@@ -7,14 +10,13 @@ class OrderLine < ApplicationRecord
   belongs_to :product
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
-  
+
   validate :check_stock
 
   def check_stock
-    unless product.available_stock?(quantity)
-      errors.add(:quantity, :amount, message: "Not enough stock")
-    end 
+    errors.add(:quantity, :amount, message: 'Not enough stock') unless product.available_stock?(quantity)
   end
+
   private
 
   def set_total

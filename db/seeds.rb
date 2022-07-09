@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -13,10 +15,10 @@ puts 'Start seeding'
 
 puts 'Seeding users'
 admin_data = {
-  email: "alvaro@mail.com",
-  password: "123456",
-  first_name: "Alvaro",
-  last_name: "Torres",
+  email: 'alvaro@mail.com',
+  password: '123456',
+  first_name: 'Alvaro',
+  last_name: 'Torres',
   address: Faker::Address.street_address,
   phone: Faker::PhoneNumber.subscriber_number(length: 9),
   role: 1
@@ -25,8 +27,8 @@ admin_data = {
 User.create(admin_data)
 
 customer_data = {
-  email: "test1@mail.com",
-  password: "123456",
+  email: 'test1@mail.com',
+  password: '123456',
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   address: Faker::Address.street_address,
@@ -37,7 +39,7 @@ User.create(customer_data)
 puts 'Finished seeding users'
 
 puts 'Seeding products'
-products_data.each do |product_data|
+products_data.each do |_product_data|
   Product.create(products_data)
 end
 puts 'Finished seeding products'

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
+# Model for Product
 class Product < ApplicationRecord
   attr_accessor :changed_by
 
   before_update :new_log_update
-  
 
   has_many :order_lines, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -25,7 +27,7 @@ class Product < ApplicationRecord
   end
 
   def available_stock?(quantity)
-    self.stock >= quantity
+    stock >= quantity
   end
 
   def update_stock(quantity)
@@ -35,9 +37,12 @@ class Product < ApplicationRecord
   private
 
   def new_log_update
-    if self.changed_by.admin?
-      self.changes.each do |key, value|
-        self.logs.create(attr: key, old_val: value[0], new_val: value[1], user_id: self.changed_by.id) unless key == "updated_at"
+    return unless changed_by.admin?
+
+    changes.each do |key, value|
+      unless key == 'updated_at'
+        logs.create(attr: key, old_val: value[0], new_val: value[1],
+                    user_id: changed_by.id)
       end
     end
   end

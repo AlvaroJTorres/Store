@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for Order
 class Order < ApplicationRecord
   before_save :set_total
 
@@ -9,7 +12,7 @@ class Order < ApplicationRecord
     current_order_line = order_lines.find_by(product_id: params[:product_id])
     if current_order_line
       current_order_line.quantity += params[:quantity].to_i
-      
+
     else
       current_order_line = order_lines.new(params)
     end

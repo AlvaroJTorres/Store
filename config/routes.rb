@@ -1,7 +1,9 @@
-Rails.application.routes.draw do
-  root "products#index"
+# frozen_string_literal: true
 
-  devise_for :users, :controllers => { :sessions => "sessions"}
+Rails.application.routes.draw do
+  root 'products#index'
+
+  devise_for :users, controllers: { sessions: 'sessions' }
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :products, shallow: true do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
   end
   resources :order_lines
   resources :orders, only: [:update]

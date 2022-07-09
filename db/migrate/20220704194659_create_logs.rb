@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Migration to create polymorphic log table
 class CreateLogs < ActiveRecord::Migration[7.0]
   def change
     create_table :logs do |t|

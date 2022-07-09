@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
+# Controllers for Products
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[edit update destroy]
   before_action :new_order_line, only: %i[index show]
 
   def index
-    if params[:term]
-      @products = Product.search_by(params[:term])
-    else
-      @products = Product.all
-    end
-    
+    @products = if params[:term]
+                  Product.search_by(params[:term])
+                else
+                  Product.all
+                end
   end
 
   def show

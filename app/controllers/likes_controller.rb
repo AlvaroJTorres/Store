@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controllers for Likes
 class LikesController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
