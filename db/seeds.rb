@@ -78,7 +78,7 @@ end
 
 product3 = Product.find(3)
 (2..4).each do |i|
-  product15.likes.create(user_id: i)
+  product3.likes.create(user_id: i)
 end
 
 puts 'Finished seeding likes'
