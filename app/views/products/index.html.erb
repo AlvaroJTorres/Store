@@ -19,6 +19,12 @@
         <%= link_to "New Product", new_product_path %>
       </button>
     <% end %>
+
+    <% if current_user&.admin? %>
+      <button class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300">
+        <%= link_to "See logs", logs_path %>
+      </button>
+    <% end %>
   </div>
 </div>
 
