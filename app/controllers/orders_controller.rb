@@ -4,7 +4,7 @@
 class OrdersController < ApplicationController
   before_action :set_order
 
-  def show
+  def cart
     @order_lines = current_order.order_lines
   end
 
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       session.delete(:order_id)
       redirect_to products_path
     else
-      render :show
+      render :cart
     end
   end
 
