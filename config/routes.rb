@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
   end
   resources :order_lines
-  resources :orders, only: [:update]
+  resources :orders
   resources :logs, only: [:index]
 
-  get 'cart', to: 'orders#show'
+  get 'cart', to: 'orders#cart'
 end
