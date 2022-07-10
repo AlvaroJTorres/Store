@@ -1,0 +1,25 @@
+<h1>Logs of Products Changes</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Product Name</th>
+    <th>Attribute</th>
+    <th>Old Value</th>
+    <th>New Value</th>
+    <th>Admin Id</th>
+    <th>Admin Name</th>
+  </tr>
+
+  <% @logs.each do |log| %>
+  <tr>
+    <td><%= log.id %></td>
+    <td><%= log.loggable.name.capitalize %></td>
+    <td><%= log.attr.capitalize %></td>
+    <td><%= log.attr == "price" ? number_with_precision(log.old_val, precision: 2) : log.old_val %></td>
+    <td><%= log.attr == "price" ? number_with_precision(log.new_val, precision: 2) : log.new_val %></td>
+    <td><%= log.user_id %></td>
+    <td><%= log.user.first_name %></td>
+  </tr>
+  <% end %>
+</table>
