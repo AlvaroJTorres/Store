@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :order_lines
   resources :orders, only: [:update]
+  resources :logs, only: [:index]
 
   get 'cart', to: 'orders#show'
 end
