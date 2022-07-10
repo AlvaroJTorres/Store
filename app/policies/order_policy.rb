@@ -2,7 +2,7 @@
 
 # Policy for Orders
 class OrderPolicy < ApplicationPolicy
-  def show?
+  def cart?
     true
   end
 
