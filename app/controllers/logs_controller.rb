@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
   def index
-    @logs = Log.all
+    @logs = authorize Log.all
   end
 end
