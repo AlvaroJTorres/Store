@@ -9,7 +9,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'json'
 
-products_data = JSON.parse(File.read('db/data/products.json'))
+products_data = JSON.parse(File.read('db/data/products.json'), symbolize_names: true)
 tags_data = JSON.parse(File.read('db/data/tags.json'))
 
 puts 'Start seeding'
@@ -38,25 +38,27 @@ User.create(admin_data)
   }
   User.create(customer_data)
 end
-
 puts 'Finished seeding users'
 
 puts 'Seeding tags'
-Tag.create(tags_data)
+tags_data.each do |tag|
+  Tag.create(name: tag)
+end
+
 puts 'Finished seeding tags'
 
 puts 'Seeding products'
 products_data.each do |product_data|
   product = {
-    name: products_data[:name],
-    description: products_data[:description],
-    price: products_data[:price],
-    stock: products_data[:stock]
+    name: product_data[:name],
+    description: product_data[:description],
+    price: product_data[:price],
+    stock: product_data[:stock]
   }
 
   new_product = Product.create(product)
 
-  products_data[:tags].each do |tag|
+  product_data[:tags].each do |tag|
     new_product.tags << Tag.find_by(name: tag)
   end
 end
@@ -78,4 +80,5 @@ product3 = Product.find(3)
 (2..4).each do |i|
   product15.likes.create(user_id: i)
 end
+
 puts 'Finished seeding likes'
