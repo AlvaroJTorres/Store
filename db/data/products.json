@@ -3,120 +3,140 @@
     "name": "doritos",
     "description": "Flavored tortilla chips",
     "price": 7.00,
-    "stock": 50
+    "stock": 50,
+    "tags": ["chips", "snack"]
   },
   {
     "name": "pringles",
     "description": "Stackable potato-based crisps",
     "price": 22.00,
-    "stock": 25
+    "stock": 25,
+    "tags": ["chips", "snack"]
   },
   {
     "name": "lay's",
     "description": "Potato chips",
     "price": 4.00,
-    "stock": 70
+    "stock": 70,
+    "tags": ["chips", "snack"]
   },
   {
     "name": "takis",
     "description": "Rolled, corn tortilla chip",
     "price": 12.00,
-    "stock": 30
+    "stock": 30,
+    "tags": ["chips", "snack"]
   },
   {
     "name": "ruffles",
     "description": "Ruffled (crinkle-cut) potato chips",
     "price": 18.00,
-    "stock": 60
+    "stock": 60,
+    "tags": ["chips", "snack"]
   },
   {
     "name": "coca cola",
     "description": "Carbonated soft drink",
     "price": 8.00,
-    "stock": 50
+    "stock": 50,
+    "tags": ["soda", "beverage"]
   },
   {
     "name": "pepsi",
     "description": "Carbonated soft drink",
     "price": 7.50,
-    "stock": 25
+    "stock": 25,
+    "tags": ["soda", "beverage"]
   },
   {
     "name": "dr pepper",
     "description": "Carbonated soft drink",
     "price": 6.50,
-    "stock": 70
+    "stock": 70,
+    "tags": ["soda", "beverage"]
   },
   {
     "name": "mountain dew",
     "description": "Carbonated soft drink",
     "price": 9.50,
-    "stock": 30
+    "stock": 30,
+    "tags": ["soda", "beverage"]
   },
   {
     "name": "sprite",
     "description": "Carbonated soft drink",
     "price": 5.50,
-    "stock": 60
+    "stock": 60,
+    "tags": ["soda", "beverage"]
   },
   {
     "name": "stella artois",
     "description": "Pilsner beer",
     "price": 25.00,
-    "stock": 50
+    "stock": 50,
+    "tags": ["beer", "beverage"]
   },
   {
     "name": "corona",
     "description": "Beer",
     "price": 12.50,
-    "stock": 25
+    "stock": 25,
+    "tags": ["beer", "beverage"]
   },
   {
     "name": "heineken",
     "description": "Pale lager beer",
     "price": 15.50,
-    "stock": 70
+    "stock": 70,
+    "tags": ["beer", "beverage"]
   },
   {
     "name": "budweiser",
     "description": " American-style pale lager",
     "price": 13.50,
-    "stock": 30
+    "stock": 30,
+    "tags": ["beer", "beverage"]
   },
   {
     "name": "guinness",
     "description": " Irish dry stout",
     "price": 31.50,
-    "stock": 60
+    "stock": 60,
+    "tags": ["beer", "beverage"]
   },
   {
     "name": "oreo",
     "description": "Sandwich cookie",
     "price": 3.00,
-    "stock": 50
+    "stock": 50,
+    "tags": ["cookies", "snack"]
   },
   {
     "name": "chips ahoy!",
     "description": " Chocolate chip cookie",
     "price": 2.50,
-    "stock": 25
+    "stock": 25,
+    "tags": ["cookies", "snack"]
   },
   {
     "name": "m&m's",
     "description": "Multi-colored button-shaped chocolates",
     "price": 5.00,
-    "stock": 70
+    "stock": 70,
+    "tags": ["chocolates", "snack"]
   },
   {
     "name": "ritz crackers",
     "description": " Snack cracker",
     "price": 2.50,
-    "stock": 30
+    "stock": 30,
+    "tags": ["cookies", "snack"]
   },
   {
     "name": "oreo thins",
     "description": "Thinner sandwich cookie",
     "price": 3.50,
-    "stock": 60
+    "stock": 60,
+    "tags": ["cookies", "snack"]
   }
 ]
