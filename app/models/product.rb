@@ -16,8 +16,20 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :stock, presence: true, numericality: { greater_than: 0 }
 
-  def self.search_by(term)
-    where('name LIKE ?', "%#{term}%")
+  def self.filter_by_term(term)
+    where('products.name LIKE ?', "%#{term}%")
+  end
+
+  def self.filter_by_tag(tag)
+    joins(products_tags: :tag).where(tags: { id: tag })
+  end
+
+  def self.filter_by_letter(direction)
+    order("name #{direction}")
+  end
+
+  def self.filter_by_likes_count(direction)
+    order("likes_count #{direction}")
   end
 
   def liked_by?(current_user)
