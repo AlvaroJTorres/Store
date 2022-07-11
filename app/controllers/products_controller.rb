@@ -6,11 +6,10 @@ class ProductsController < ApplicationController
   before_action :new_order_line, only: %i[index show]
 
   def index
-    @products = if params[:term]
-                  Product.search_by(params[:term])
-                else
-                  Product.all
-                end
+    @products = Product.all
+    filtering_params(params).each do |key, value|
+      @products = @products.public_send("filter_by_#{key}", value) if value.present?
+    end
   end
 
   def show
@@ -54,7 +53,11 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :stock, :term)
+    params.require(:product).permit(:name, :description, :price, :stock, :term, :tag, :letter, :likes_count)
+  end
+
+  def filtering_params(params)
+    params.slice(:term, :tag, :letter, :likes_count)
   end
 
   def set_product
