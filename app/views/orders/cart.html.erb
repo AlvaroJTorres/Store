@@ -1,20 +1,20 @@
 <div class="flex flex-col gap-2 p-6">
   <div class="grid grid-cols-4 gap-2 p-2 border-b-2 border-slate-500">
     <% @order_lines.each do |order_line| %>
-      <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
-        <p class="text-2xl"><%= order_line.product.name.capitalize %></p>
-        <p>Cost: $ <%= number_with_precision(order_line.product.price, precision: 2) %></p>
-        <p>Subtotal: $ <%= number_with_precision(order_line.total, precision: 2) %></p>
+      <div class="flex flex-col p-2 gap-2 border-2 border-slate-300 items-center">
+        <p class="text-4xl"><%= order_line.product.name.capitalize %></p>
+        <p class="text-2xl">Cost: $ <%= number_with_precision(order_line.product.price, precision: 2) %></p>
+        <p class="text-2xl">Subtotal: $ <%= number_with_precision(order_line.total, precision: 2) %></p>
 
         <% if policy(order_line).update? %>
-          <%= form_with model: order_line do |form| %>
+          <%= form_with model: order_line, html: {class: "flex flex-col justify-center items-center gap-6 p-4 border-2 border-slate-300"} do |form| %>
             <%= form.hidden_field :product_id, value: order_line.product.id %>
             <%= form.label :quantity %>
             <%= form.number_field :quantity, value: order_line.quantity, required: true %>
-            <%= form.submit "Update" %>
+            <%= form.submit "Update", { class: button_style } %>
           <% end %>
 
-          <%= button_to "Delete item", order_line_path(order_line), method: :delete %>
+          <%= button_to "Delete item", order_line_path(order_line), { method: :delete, class: button_style } %>
         <% end %>
       </div>
     <% end %>
@@ -31,7 +31,7 @@
       <% elsif current_user&.admin?%>
         <p>Admin can't buy</p>
       <% else %>
-        <%= button_to "Send Order", current_user&.customer? ? order_path(@order) : "", method: :patch, html: {class: "p-2 border-2 border-cyan-500"} %>
+        <%= button_to "Send Order", current_user&.customer? ? order_path(@order) : "", { method: :patch, class: button_style } %>
       <% end %>
     </div>
   </div>

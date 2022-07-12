@@ -1,4 +1,4 @@
-<%= form_with model: [commentable, Comment.new] do |form| %>
+<%= form_with model: [commentable, Comment.new], html: {class: "flex flex-col justify-center items-center gap-6 p-4 border-2 border-slate-300"} do |form| %>
   <p>
     <%= form.label :body %>
     <%= form.text_area :body %>
@@ -9,8 +9,8 @@
     <%= form.number_field :rate, in: 0..5 %>
   </p>
 
-  <p>
-    <%= form.submit "Add comment" %>
-  </p>
+  <button>
+    <%= form.submit "Add comment", { class: button_style } %>
+  </button>
 
 <% end %>

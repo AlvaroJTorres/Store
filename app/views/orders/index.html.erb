@@ -1,5 +1,9 @@
-<% @orders.each do |order| %>
-  <%= render partial: "order_card", locals: { order: order } %>
-<% end %>
+<div class="flex flex-col justify-center items-center">
+  <div class="grid grid-cols-4 gap-2 p-2">
+    <% @orders.each do |order| %>
+      <%= render partial: "order_card", locals: { order: order } %>
+    <% end %>
+  </div>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back, {class: button_style} %>
+</div>

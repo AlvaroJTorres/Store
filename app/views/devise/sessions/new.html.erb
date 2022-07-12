@@ -22,8 +22,8 @@
     </div>
 
     <div class="flex flex-col justify-center items-center gap-2">
-      <%= f.submit "Log in" %>
-      <%= link_to "Back", :back %>
+      <%= f.submit "Log in", { class: button_style } %>
+      <%= link_to "Back", :back, { class: button_style } %>
       <%= render "devise/shared/links" %>
     </div>
   <% end %>

@@ -9,9 +9,9 @@
       <%= form.number_field :stock, required: true %>
       
       
-      <%= form.submit "Update product" %>
+      <%= form.submit "Update product", { class: button_style } %>
     <% end %>
   </div>
 
-  <%= link_to "Back", :back %>
+  <%= link_to "Back", :back, { class: button_style } %>
 </div>

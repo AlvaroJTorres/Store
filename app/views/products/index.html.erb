@@ -1,35 +1,5 @@
-<div class="flex flex-col">
-  <%= form_with model: @product, method: :get, html: {class: "flex justify-center items-center gap-6"} do |form| %>
-    <div>
-      <%= form.label :term, "Search by:" %>
-      <%= form.text_field :term %>
-    </div>
-
-    <div>
-      <%= form.label :tag, "Sort by Tag:" %>
-      <%= form.collection_select :tag, Tag.all, :id, :name, include_blank: true  %>
-    </div>
-
-    <div>
-      <%= form.label :letter, "Sort by Name:" %>
-      <%= form.radio_button :letter, "asc" %>
-      <%= form.label :letter_asc, "ASC" %>
-      <%= form.radio_button :letter, "desc" %>
-      <%= form.label :letter_desc, "DESC" %>
-    </div>
-
-    <div>
-      <%= form.label :likes_count, "Sort by Popularity:" %>
-      <%= form.radio_button :likes_count, "asc" %>
-      <%= form.label :likes_count_asc, "ASC" %>
-      <%= form.radio_button :likes_count, "desc" %>
-      <%= form.label :likes_count_desc, "DESC" %>
-    </div>
-
-    <div class="text-2xl">
-      <%= form.submit "Sort" %>
-    </div>
-  <% end %>
+<div class="flex flex-col justify-center">
+  <%= render partial: "filter_bar" %>
 
   <div class="grid grid-cols-4 gap-2 p-2">
     <% if @products.empty? %>
@@ -41,13 +11,13 @@
     <% end %>
 
     <% if policy(@products).create? %>
-      <button class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300">
+      <button class="flex flex-col p-2 gap-2 border-2 border-slate-300 justify-center items-center text-2xl">
         <%= link_to "New Product", new_product_path %>
       </button>
     <% end %>
 
     <% if current_user&.admin? %>
-      <button class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300">
+      <button class="flex flex-col p-2 gap-2 border-2 border-slate-300 justify-center items-center text-2xl">
         <%= link_to "See logs", logs_path %>
       </button>
     <% end %>

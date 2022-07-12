@@ -1,7 +1,11 @@
-<%= render partial: "product_cart", locals: { product: @product, order_line: @order_line }%>
+<div class="flex flex-col gap-4 p-2 justify-center items-center">
+  <%= render partial: "product_cart", locals: { product: @product, order_line: @order_line }%>
 
-<%= render partial: "comments/form", locals: { commentable: @product } %>
+  <% if policy(Comment).create? %>
+    <%= render partial: "comments/form", locals: { commentable: @product } %>
+  <% end %>
 
-<%= render partial: "comments/comments", locals: { commentable: @product } %>
+  <%= render partial: "comments/comments", locals: { commentable: @product } %>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back, { class: button_style } %>
+</div>

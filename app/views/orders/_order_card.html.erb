@@ -1,15 +1,22 @@
 <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
-  <%= order.date %>
-  <%= number_with_precision(order.total, precision: 2) %>
-  <%= order.status %>
+  <div class="flex flex-col gap-2 justify-center items-center">
+    <p>Order: <%= order.id %></p>
+    <p>Date: <%= order.date %></p>
+    <p>Total: $<%= number_with_precision(order.total, precision: 2) %></p>
+    <p>Status: <%= order.status.capitalize %></p>
+  </div>
 
-  <% order.order_lines.each do |order_line| %>
+  <div class="grid grid-cols-2 gap-4">
+    <% order.order_lines.each do |order_line| %>
       <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
         <p class="text-2xl"><%= order_line.product.name.capitalize %></p>
         <p>Cost: $ <%= number_with_precision(order_line.product.price, precision: 2) %></p>
         <p>Subtotal: $ <%= number_with_precision(order_line.total, precision: 2) %></p>
       </div>
-  <% end %>
+    <% end %>
+  </div>
 
-  <%= link_to "See more...", order_path(order) unless current_page?(order_path(order)) %>
+  <% unless current_page?(order_path(order)) %>
+  <%= link_to "See more...", order_path(order), { class: button_style } %>
+  <% end %>
 </div>

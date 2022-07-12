@@ -1,9 +1,10 @@
 <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
   <p class="text-2xl"><%= product.name.capitalize %></p>
-  <p>$ <%= number_with_precision(product.price, precision: 2) %></p>
+  <p class="text-xl">$ <%= number_with_precision(product.price, precision: 2) %></p>
   <p>Available: <%= product.stock %></p>
 
   <div class="flex gap-2">
+  <p>Tags:</p>
   <% product.tags.each do |tag| %>
     <p><%= tag.name.capitalize %></p>
   <% end %>
@@ -13,31 +14,33 @@
     <% if policy(product.likes).create? %>
       
       <% if product.liked_by? current_user %>
-        <%= button_to "Dislike?", like_path(product.find_like(current_user)), method: :delete %>
+        <%= button_to "Dislike?", like_path(product.find_like(current_user)), { method: :delete, class: button_style } %>
       <% else %>
-        <%= button_to "Like?", product_likes_path(product), method: :post %>
+        <%= button_to "Like?", product_likes_path(product), { method: :post, class: button_style } %>
       <% end %>
     <% end %>
     <p>Likes: <%= product.likes_count %></p>
   </div>
 
   <% if policy(product).update? %>
-    <%= link_to "Edit product", edit_product_path(product) %>
-    <%= button_to "Delete product", product_path(product), method: :delete %>
+    <%= link_to "Edit product", edit_product_path(product), { class: button_style } %>
+    <%= button_to "Delete product", product_path(product), { method: :delete, class: button_style } %>
   <% end %>
 
-   <div>
-      <% if policy(@order_line).create? %>
-        <%= form_with model: @order_line do |form| %>
-          <%= form.hidden_field :product_id, value: product.id %>
-            <div class="text-base">
-              <%= form.label :quantity %>
-            </div>
-          <%= form.number_field :quantity, required: true %>
-          <%= form.submit "Add to Cart" %>
-        <% end %>
+  <div>
+    <% if policy(@order_line).create? %>
+      <%= form_with model: @order_line do |form| %>
+        <%= form.hidden_field :product_id, value: product.id %>
+          <div class="text-base">
+            <%= form.label :quantity %>
+          </div>
+        <%= form.number_field :quantity, required: true %>
+        <%= form.submit "Add to Cart", { class: button_style } %>
       <% end %>
-   </div>
+    <% end %>
+  </div>
 
-   <%= link_to "See more...", product_path(product) unless current_page?(product_path(product)) %>
+  <% unless current_page?(product_path(product)) %>
+  <%= link_to "See more...", product_path(product), { class: button_style } %>
+  <% end %>
 </div>

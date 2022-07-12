@@ -1,21 +1,19 @@
-<div class="flex flex-col gap-4 p-2 border-2 items-center justify-center border-slate-300">
-  <div class="flex flex-col">
-    <%= form_with model: @product do |form| %>
-      <%= form.label :name %>
-      <%= form.text_field :name, required: true %>
+<div class="flex flex-col gap-4 p-2 justify-center items-center">
+  <%= form_with model: @product, html: {class: "flex flex-col justify-center items-center gap-6 p-4 border-2 border-slate-300"} do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
 
-      <%= form.label :description %>
-      <%= form.text_field :description %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
 
-      <%= form.label :price %>
-      <%= form.number_field :price, required: true %>
+    <%= form.label :price %>
+    <%= form.number_field :price, required: true %>
 
-      <%= form.label :stock %>
-      <%= form.number_field :stock, required: true %>
-      
-      
-      <%= form.submit "Add product to list" %>
-    <% end %>
-  </div>
-  <%= link_to "Back", :back %>
+    <%= form.label :stock %>
+    <%= form.number_field :stock, required: true %>
+            
+    <%= form.submit "Add product to list", { class: button_style } %>
+  <% end %>
+
+  <%= link_to "Back", :back, { class: button_style } %>
 </div>

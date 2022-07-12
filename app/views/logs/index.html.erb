@@ -1,27 +1,35 @@
-<h1>Logs of Products Changes</h1>
+<div class="flex flex-col gap-4 items-center">
+  <h1 class="text-4xl">Logs of Products Changes</h1>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Product Name</th>
-    <th>Attribute</th>
-    <th>Old Value</th>
-    <th>New Value</th>
-    <th>Admin Id</th>
-    <th>Admin Name</th>
-  </tr>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Product Name</th>
+          <th scope="col" class="px-6 py-3">Attribute</th>
+          <th scope="col" class="px-6 py-3">Old Value</th>
+          <th scope="col" class="px-6 py-3">New Value</th>
+          <th scope="col" class="px-6 py-3">Admin Id</th>
+          <th scope="col" class="px-6 py-3">Admin Name</th>
+        </tr>
+      </thead>
 
-  <% @logs.each do |log| %>
-  <tr>
-    <td><%= log.id %></td>
-    <td><%= log.loggable.name.capitalize %></td>
-    <td><%= log.attr.capitalize %></td>
-    <td><%= log.attr == "price" ? number_with_precision(log.old_val, precision: 2) : log.old_val %></td>
-    <td><%= log.attr == "price" ? number_with_precision(log.new_val, precision: 2) : log.new_val %></td>
-    <td><%= log.user_id %></td>
-    <td><%= log.user.first_name %></td>
-  </tr>
-  <% end %>
-</table>
+      <tbody>
+        <% @logs.each do |log| %>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"><%= log.id %></td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"><%= log.loggable.name.capitalize %></td>
+            <td class="px-6 py-4"><%= log.attr.capitalize %></td>
+            <td class="px-6 py-4"><%= log.attr == "price" ? number_with_precision(log.old_val, precision: 2) : log.old_val %></td>
+            <td class="px-6 py-4"><%= log.attr == "price" ? number_with_precision(log.new_val, precision: 2) : log.new_val %></td>
+            <td class="px-6 py-4"><%= log.user_id %></td>
+            <td class="px-6 py-4"><%= log.user.first_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back, { class: button_style } %>
+</div>

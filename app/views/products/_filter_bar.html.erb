@@ -1,0 +1,31 @@
+<%= form_with model: @product, method: :get, html: {class: "flex justify-center items-center gap-6 py-2 border-2 border-slate-300"} do |form| %>
+  <div>
+    <%= form.label :term, "Search by:" %>
+    <%= form.text_field :term %>
+  </div>
+
+  <div>
+    <%= form.label :tag, "Sort by Tag:" %>
+    <%= form.collection_select :tag, Tag.all, :id, :name, include_blank: true  %>
+  </div>
+
+  <div>
+    <%= form.label :letter, "Sort by Name:" %>
+    <%= form.radio_button :letter, "asc" %>
+    <%= form.label :letter_asc, "ASC" %>
+    <%= form.radio_button :letter, "desc" %>
+    <%= form.label :letter_desc, "DESC" %>
+  </div>
+
+  <div>
+    <%= form.label :likes_count, "Sort by Popularity:" %>
+    <%= form.radio_button :likes_count, "asc" %>
+    <%= form.label :likes_count_asc, "ASC" %>
+    <%= form.radio_button :likes_count, "desc" %>
+    <%= form.label :likes_count_desc, "DESC" %>
+  </div>
+
+  <div class="text-2xl">
+    <%= form.submit "Sort", { class: button_style } %>
+  </div>
+<% end %>
