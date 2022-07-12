@@ -38,4 +38,6 @@
         <% end %>
       <% end %>
    </div>
+
+   <%= link_to "See more...", product_path(product) unless current_page?(product_path(product)) %>
 </div>
