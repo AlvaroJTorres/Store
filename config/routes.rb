@@ -11,11 +11,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  resources :products, shallow: true do
+  concern :commentable do
+    resources :comments
+  end
+
+  resources :products, shallow: true, concerns: :commentable do
     resources :likes, only: %i[create destroy]
   end
   resources :order_lines
-  resources :orders
+  resources :orders, concerns: :commentable
   resources :logs, only: [:index]
 
   get 'cart', to: 'orders#cart'
