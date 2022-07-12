@@ -1,0 +1,15 @@
+<div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
+  <%= order.date %>
+  <%= number_with_precision(order.total, precision: 2) %>
+  <%= order.status %>
+
+  <% order.order_lines.each do |order_line| %>
+      <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
+        <p class="text-2xl"><%= order_line.product.name.capitalize %></p>
+        <p>Cost: $ <%= number_with_precision(order_line.product.price, precision: 2) %></p>
+        <p>Subtotal: $ <%= number_with_precision(order_line.total, precision: 2) %></p>
+      </div>
+  <% end %>
+
+  <%= link_to "See more...", order_path(order) unless current_page?(order_path(order)) %>
+</div>
