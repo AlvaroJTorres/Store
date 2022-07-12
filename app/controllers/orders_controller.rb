@@ -4,6 +4,14 @@
 class OrdersController < ApplicationController
   before_action :set_order
 
+  def index
+    @orders = Order.where(user_id: current_user.id, status: 'recieved')
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def cart
     @order_lines = current_order.order_lines
   end
