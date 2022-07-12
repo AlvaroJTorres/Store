@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
 
   validates :body, presence: true
-  validates :rate, presence: true, numericality: { in: 1..5 }
+  validates :rate, numericality: { in: 0..5 }
 end
