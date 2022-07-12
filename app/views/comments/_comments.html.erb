@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-2">
+<% commentable.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+  <p><%= comment.rate %></p>
+  <p><%= distance_of_time_in_words(Time.now, comment.created_at, include_seconds: true) %> ago</p>
+<% end %>
+</div>

@@ -1,0 +1,16 @@
+<%= form_with model: [commentable, Comment.new] do |form| %>
+  <p>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.label :rate %>
+    <%= form.number_field :rate, in: 0..5 %>
+  </p>
+
+  <p>
+    <%= form.submit "Add comment" %>
+  </p>
+
+<% end %>
