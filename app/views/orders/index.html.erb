@@ -1,0 +1,5 @@
+<% @orders.each do |order| %>
+  <%= render partial: "order_card", locals: { order: order } %>
+<% end %>
+
+<%= link_to "Back", :back %>

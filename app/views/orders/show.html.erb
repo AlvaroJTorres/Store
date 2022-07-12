@@ -1,0 +1,7 @@
+<%= render partial: "order_card", locals: { order: @order } %>
+
+<%= render partial: "comments/form", locals: { commentable: @order } %>
+
+<%= render partial: "comments/comments", locals: { commentable: @order } %>
+
+<%= link_to "Back", :back %>
