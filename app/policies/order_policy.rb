@@ -2,11 +2,19 @@
 
 # Policy for Orders
 class OrderPolicy < ApplicationPolicy
+  def index?
+    user&.customer?
+  end
+
+  def show?
+    index?
+  end
+
   def cart?
     true
   end
 
   def update?
-    user&.customer?
+    index?
   end
 end
