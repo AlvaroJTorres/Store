@@ -31,9 +31,17 @@
           <h2 class="text-3xl"><%= link_to "See Cart", cart_path %></h2>
         <% end %>
       </p>
+      <p>
+        <% if current_user&.customer? %>
+          <h2 class="text-3xl"><%= link_to "See Orders", orders_path %></h2>
+        <% else %>
+          <h2>Log in to see your orders</h2>
+        <% end %>
+      </p>
     </header>
     <main>
       <p class="text-4xl text-red-500"><%= flash[:warning] %></p>
+      <p class="text-red-500"><%= alert %></p>
       <%= yield %>
     </main>
   </body>
