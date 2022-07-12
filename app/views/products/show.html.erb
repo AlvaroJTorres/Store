@@ -1,3 +1,7 @@
 <%= render partial: "product_cart", locals: { product: @product, order_line: @order_line }%>
 
+<%= render partial: "comments/form", locals: { commentable: @product } %>
+
+<%= render partial: "comments/comments", locals: { commentable: @product } %>
+
 <%= link_to "Back", :back %>
