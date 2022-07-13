@@ -52,6 +52,7 @@ class OrderLinesController < ApplicationController
   end
 
   def set_order_line
-    @order_line = authorize @order.order_lines.find(params[:id])
+    # @order_line = authorize @order.order_lines.find(params[:id])
+    @order_line = authorize OrderLine.find(params[:id])
   end
 end

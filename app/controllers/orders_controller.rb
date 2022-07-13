@@ -2,7 +2,7 @@
 
 # Controllers for Orders
 class OrdersController < ApplicationController
-  before_action :set_order
+  before_action :set_order, only: %i[update]
 
   def index
     @orders = Order.where(user_id: current_user.id, status: 'recieved')
@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def cart
+    @order = current_order
     @order_lines = current_order.order_lines
   end
 
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def set_order
-    @order = authorize current_order
+    @order = authorize Order.find(params[:id])
   end
 
   def update_stock(order)
