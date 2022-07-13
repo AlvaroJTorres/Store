@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-# Controllers for Order Lines
+# Define the Controllers required for the OrderLine endpoints
 class OrderLinesController < ApplicationController
   before_action :set_order
   before_action :new_or_existing_product, only: %i[create]
   before_action :set_order_line, only: %i[update destroy]
 
+  # Method that responds to the create request for a new order_line
   def create
     if @order_line.save
       @order.save
@@ -20,6 +21,8 @@ class OrderLinesController < ApplicationController
     end
   end
 
+  # Method that responds to the update request to change the quantity value
+  # of an existing order_line
   def update
     @order_line.quantity = order_line_params[:quantity]
 
@@ -27,6 +30,7 @@ class OrderLinesController < ApplicationController
     redirect_to cart_path
   end
 
+  # Method that responds to the delete request to remove an order_line from the cart
   def destroy
     @order_line.destroy
 

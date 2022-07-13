@@ -1,22 +1,30 @@
 # frozen_string_literal: true
 
-# Controllers for Orders
+# Define the Controllers required for the Order endpoints
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[update]
 
+  # Method that responds to the get request to list all the records
+  # of orders from a logged user
   def index
     @orders = Order.where(user_id: current_user.id, status: 'recieved')
   end
 
+  # Method that responds to the get request to show an specific order
   def show
     @order = Order.find(params[:id])
   end
 
+  # Method that responds to the /cart endpoint to show the cart that is active
+  # on the current session
   def cart
     @order = current_order
     @order_lines = current_order.order_lines
   end
 
+  # Method that responds to the update request to close an order from a cart
+  # adds the user doing the order, the date of the order and changes its status
+  # to recieved so its no longer show on the cart, and delete its from the session
   def update
     @order.user_id = current_user.id if @order.user_id.nil?
     @order.date = Time.now

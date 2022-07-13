@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Model for Order Line
+# Class that represents the Model for the OrderLine schema
 class OrderLine < ApplicationRecord
   before_save :set_total
   after_update :update_total
@@ -13,6 +13,7 @@ class OrderLine < ApplicationRecord
 
   validate :check_stock
 
+  # Method that add an error if the product available_stock? method returns a false
   def check_stock
     errors.add(:quantity, :amount, message: 'Not enough stock') unless product.available_stock?(quantity)
   end

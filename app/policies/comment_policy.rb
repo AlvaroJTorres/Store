@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Policy for Comments
+# Define policies for Comments Controllers
 class CommentPolicy < ApplicationPolicy
+  # Policy for the create controller
   def create?
     user&.customer?
   end

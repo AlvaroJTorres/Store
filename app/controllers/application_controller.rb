@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
-# Controllers for overall Application
+# Methods that applies to the overall controllers, include
+# Pundit gem for Authorization and Helpers for the views 
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Pundit
 
+  # Callback that defines the parameters to be accepted by the Devise gem when
+  # sign_up and update account information
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

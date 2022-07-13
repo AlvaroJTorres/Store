@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Controllers for Likes
+# Define the Controllers required for the Likes endpoints
 class LikesController < ApplicationController
+  # Method that responds to the create request for a new like
   def create
     @product = Product.find(params[:product_id])
     authorize @product.likes
@@ -10,6 +11,7 @@ class LikesController < ApplicationController
     redirect_back fallback_location: products_path
   end
 
+  # Method that responds to the delete request to delete a like from a product
   def destroy
     like = Like.find(params[:id])
     authorize like

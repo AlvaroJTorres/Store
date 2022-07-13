@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-# Controllers for Comments
+# Define the Controllers required for the Comments endpoints
 class CommentsController < ApplicationController
   before_action :set_commentable
 
+  # Method that responds to the create request for a new comment
   def create
     @comment = authorize @commentable.comments.new(comments_params)
     @comment.user = current_user
