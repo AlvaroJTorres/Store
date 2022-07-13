@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Product - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link"><a href="ApplicationRecord.html">ApplicationRecord</a>
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-c-filter_by_letter">::filter_by_letter</a>
+    <li ><a href="#method-c-filter_by_likes_count">::filter_by_likes_count</a>
+    <li ><a href="#method-c-filter_by_tag">::filter_by_tag</a>
+    <li ><a href="#method-c-filter_by_term">::filter_by_term</a>
+    <li ><a href="#method-i-available_stock-3F">#available_stock?</a>
+    <li ><a href="#method-i-find_like">#find_like</a>
+    <li ><a href="#method-i-liked_by-3F">#liked_by?</a>
+    <li ><a href="#method-i-update_stock">#update_stock</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Product">
+  <h1 id="class-Product" class="class">
+    class Product
+  </h1>
+
+  <section class="description">
+    
+<p>Class that represents the Model for the <a href="Product.html"><code>Product</code></a> schema</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-i-changed_by" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">changed_by</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        <p>Saves which user did a change on the <a href="Product.html"><code>Product</code></a></p>
+        </div>
+      </div>
+    </section>
+
+
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+      <div id="method-c-filter_by_letter" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">filter_by_letter</span><span
+            class="method-args">(direction)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that filters the products by alphabetical order</p>
+
+          <div class="method-source-code" id="filter_by_letter-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_letter</span>(<span class="ruby-identifier">direction</span>)
+  <span class="ruby-identifier">order</span>(<span class="ruby-node">&quot;name #{direction}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-filter_by_likes_count" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">filter_by_likes_count</span><span
+            class="method-args">(direction)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that filters the products by the amount of likes</p>
+
+          <div class="method-source-code" id="filter_by_likes_count-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_likes_count</span>(<span class="ruby-identifier">direction</span>)
+  <span class="ruby-identifier">order</span>(<span class="ruby-node">&quot;likes_count #{direction}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-filter_by_tag" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">filter_by_tag</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that filters the list of products by its tags</p>
+
+          <div class="method-source-code" id="filter_by_tag-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_tag</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-identifier">joins</span>(<span class="ruby-value">products_tags:</span> <span class="ruby-value">:tag</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">tags:</span> { <span class="ruby-value">id:</span> <span class="ruby-identifier">tag</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-filter_by_term" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">filter_by_term</span><span
+            class="method-args">(term)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that filters the list of products per name</p>
+
+          <div class="method-source-code" id="filter_by_term-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_term</span>(<span class="ruby-identifier">term</span>)
+  <span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;products.name LIKE ?&#39;</span>, <span class="ruby-node">&quot;%#{term}%&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-available_stock-3F" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">available_stock?</span><span
+            class="method-args">(quantity)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that checks if the quantity passed on the order_line is  less than the stock of the product</p>
+
+          <div class="method-source-code" id="available_stock-3F-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">available_stock?</span>(<span class="ruby-identifier">quantity</span>)
+  <span class="ruby-identifier">stock</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">quantity</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-find_like" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">find_like</span><span
+            class="method-args">(current_user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that finds which user liked the current product</p>
+
+          <div class="method-source-code" id="find_like-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find_like</span>(<span class="ruby-identifier">current_user</span>)
+  <span class="ruby-identifier">likes</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-liked_by-3F" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">liked_by?</span><span
+            class="method-args">(current_user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that checks which user liked the current product</p>
+
+          <div class="method-source-code" id="liked_by-3F-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">liked_by?</span>(<span class="ruby-identifier">current_user</span>)
+  <span class="ruby-identifier">likes</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">exists?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-update_stock" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">update_stock</span><span
+            class="method-args">(quantity)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that updates the stock of a product after the order is saved</p>
+
+          <div class="method-source-code" id="update_stock-source">
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_stock</span>(<span class="ruby-identifier">quantity</span>)
+  <span class="ruby-keyword">self</span>[<span class="ruby-value">:stock</span>] <span class="ruby-operator">-=</span> <span class="ruby-identifier">quantity</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
