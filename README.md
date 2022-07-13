@@ -1,24 +1,69 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Store
 
-Things you may want to cover:
+This repository is also available on: https://challenge-week-five.herokuapp.com/
 
-* Ruby version
+## Install
 
-* System dependencies
+### Clone the repository
 
-* Configuration
+```shell
+HTTPS: git clone https://gitlab.com/AlvaroJTorres/week-5-challenge.git
 
-* Database creation
+or
 
-* Database initialization
+SSH: git clone git@gitlab.com:AlvaroJTorres/week-5-challenge.git
+```
 
-* How to run the test suite
+### Check your Ruby version
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+ruby -v
+```
 
-* Deployment instructions
+The ouput should start with something like `ruby 3.1.1`
 
-* ...
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
+
+```shell
+rbenv install 3.1.1
+```
+
+### Install dependencies
+
+```shell
+bundle install
+```
+
+## Server
+
+To start te application run
+
+```shell
+bin/dev
+```
+
+And then visit on your browser
+
+```shell
+http://localhost:3000/
+```
+
+## Test
+
+To run the tests write on the console
+
+Tests will be run with MiniTest
+
+```shell
+rails test
+```
+
+## Documentation
+
+Documentation for the app is available on
+
+```shell
+./doc/index.html
+```
