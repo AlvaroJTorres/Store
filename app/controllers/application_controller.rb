@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Methods that applies to the overall controllers, include
-# Pundit gem for Authorization and Helpers for the views 
+# Pundit gem for Authorization and Helpers for the views
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Pundit

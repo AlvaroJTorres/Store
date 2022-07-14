@@ -47,7 +47,7 @@ class Product < ApplicationRecord
     likes.find_by(user_id: current_user.id)
   end
 
-  # Method that checks if the quantity passed on the order_line is 
+  # Method that checks if the quantity passed on the order_line is
   # less than the stock of the product
   def available_stock?(quantity)
     stock >= quantity

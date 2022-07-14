@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
   enum status: { in_process: 0, recieved: 1, on_route: 2, delivered: 3 }
 
-  # Method that defines that if an order_line of a product already exists it 
+  # Method that defines that if an order_line of a product already exists it
   # updates the quantity value of the order_line, else it creates a new
   # instance of an order_line for the product.
   # Recieves all the params send to the order_line
