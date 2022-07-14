@@ -1,6 +1,7 @@
 <div class="grid grid-cols-4 gap-2">
   <% commentable.comments.each do |comment| %>
     <div class="flex flex-col gap-2">
+      <p>Posted by: <%= comment.user.first_name %> </p>
       <p>Comment: <%= comment.body %></p>
       <p>Rating: <%= comment.rate %></p>
       <p>Created <%= distance_of_time_in_words(Time.now, comment.created_at, include_seconds: true) %> ago</p>
