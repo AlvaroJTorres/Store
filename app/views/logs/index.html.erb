@@ -12,6 +12,7 @@
           <th scope="col" class="px-6 py-3">New Value</th>
           <th scope="col" class="px-6 py-3">Admin Id</th>
           <th scope="col" class="px-6 py-3">Admin Name</th>
+          <th scope="col" class="px-6 py-3">Change Date</th>
         </tr>
       </thead>
 
@@ -25,6 +26,7 @@
             <td class="px-6 py-4"><%= log.attr == "price" ? number_with_precision(log.new_val, precision: 2) : log.new_val %></td>
             <td class="px-6 py-4"><%= log.user_id %></td>
             <td class="px-6 py-4"><%= log.user.first_name %></td>
+            <td class="px-6 py-4"><%= log.created_at.strftime("%d/%m/%Y") %></td>
           </tr>
         <% end %>
       </tbody>
