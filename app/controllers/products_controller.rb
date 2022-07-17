@@ -40,10 +40,8 @@ class ProductsController < ApplicationController
   # and changes the stock and price params
   def update
     @product.changed_by = current_user
-    @product.stock = product_params[:stock]
-    @product.price = product_params[:price]
 
-    if @product.save
+    if @product.update(permitted_attributes(@product))
       redirect_to products_path
     else
       render :edit
