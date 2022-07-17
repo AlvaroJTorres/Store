@@ -17,26 +17,6 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :stock, presence: true, numericality: { greater_than: 0 }
 
-  # Method that filters the list of products per name
-  def self.filter_by_term(term)
-    where('products.name LIKE ?', "%#{term}%")
-  end
-
-  # Method that filters the list of products by its tags
-  def self.filter_by_tag(tag)
-    joins(products_tags: :tag).where(tags: { id: tag })
-  end
-
-  # Method that filters the products by alphabetical order
-  def self.filter_by_letter(direction)
-    order("name #{direction}")
-  end
-
-  # Method that filters the products by the amount of likes
-  def self.filter_by_likes_count(direction)
-    order("likes_count #{direction}")
-  end
-
   # Method that checks which user liked the current product
   def liked_by?(current_user)
     likes.where(user_id: current_user.id).exists?

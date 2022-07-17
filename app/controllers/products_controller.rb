@@ -8,10 +8,7 @@ class ProductsController < ApplicationController
   # Method that responds to the get request to list all the records
   # of products
   def index
-    @products = Product.all
-    filtering_params(params).each do |key, value|
-      @products = @products.public_send("filter_by_#{key}", value) if value.present?
-    end
+    @products = products_scope
   end
 
   # Method that responds to the get request to show an specific product
@@ -65,8 +62,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :description, :price, :stock, :term, :tag, :letter, :likes_count)
   end
 
-  def filtering_params(params)
-    params.slice(:term, :tag, :letter, :likes_count)
+  def products_scope
+    ordered_by_name_products = ProductsQuery.new.order_by_letter(params[:letter])
+    ordered_by_likes_products = ProductsQuery.new(ordered_by_name_products).order_by_likes_count(params[:likes_count])
+    filter_by_name_products = ProductsQuery.new(ordered_by_likes_products).filter_by_term(params[:term])
+    ProductsQuery.new(filter_by_name_products).filter_by_tag(params[:tag])
   end
 
   def set_product
