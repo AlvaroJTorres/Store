@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :products, shallow: true, concerns: :commentable do
-    resources :likes, only: %i[create destroy]
+  resources :products, concerns: :commentable do
+    resources :likes, shallow: true, only: %i[create destroy]
   end
   resources :order_lines
   resources :orders, concerns: :commentable
