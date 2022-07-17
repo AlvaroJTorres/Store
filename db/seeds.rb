@@ -27,6 +27,18 @@ admin_data = {
 
 User.create(admin_data)
 
+support_data = {
+  email: 'support@mail.com',
+  password: '123456',
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  address: Faker::Address.street_address,
+  phone: Faker::PhoneNumber.subscriber_number(length: 9),
+  role: 2
+}
+
+User.create(support_data)
+
 5.times do |i|
   customer_data = {
     email: "test#{i + 1}@mail.com",
