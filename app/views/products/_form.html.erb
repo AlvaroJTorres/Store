@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-4 p-2 justify-center items-center">
+  <%= form_with model: product, html: {class: "flex flex-col justify-center items-center gap-6 p-4 border-2 border-slate-300"} do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+
+    <% if current_user&.admin? %>
+      <%= form.label :price %>
+      <%= form.number_field :price, required: true %>
+    <% end %>
+
+    <%= form.label :stock %>
+    <%= form.number_field :stock, required: true %>
+            
+    <%= form.submit current_page?(new_product_path) ? "Add Product" : "Update", { class: button_style } %>
+  <% end %>
+
+  <%= link_to "Back", :back, { class: button_style } %>
+</div>
