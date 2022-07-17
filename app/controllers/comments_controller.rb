@@ -3,6 +3,7 @@
 # Define the Controllers required for the Comments endpoints
 class CommentsController < ApplicationController
   before_action :set_commentable
+  before_action :set_comment, only: %i[update destroy]
 
   # Method that responds to the create request for a new comment
   def create
@@ -11,6 +12,19 @@ class CommentsController < ApplicationController
 
     flash[:alert] = "Comment wasn't created" unless @comment.save
 
+    redirect_to @commentable
+  end
+
+  def update
+    @comment.approved = 1
+    flash[:alert] = "Comment wasn't approved" unless @comment.save
+
+    redirect_to @commentable
+      
+  end
+
+  def destroy
+    @comment.destroy
     redirect_to @commentable
   end
 
@@ -28,12 +42,7 @@ class CommentsController < ApplicationController
                    end
   end
 
-  def set_commentable_path
-    case @commentable.class.to_s
-    when 'Product'
-      product_path(@commentable)
-    when 'Order'
-      order_path(@commentable)
-    end
+  def set_comment
+    @comment = authorize @commentable.comments.find(params[:id])
   end
 end
