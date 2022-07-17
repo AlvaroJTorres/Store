@@ -4,11 +4,12 @@
 class ProductPolicy < ApplicationPolicy
   def permitted_attributes
     if user.support?
-      [:name, :description, :stock]
+      %i[name description stock]
     elsif user.admin?
-      [:name, :description, :price, :stock]
+      %i[name description price stock]
     end
   end
+
   # Policy for the create controller
   def create?
     user&.admin?

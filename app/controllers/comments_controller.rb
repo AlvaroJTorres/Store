@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
     flash[:alert] = "Comment wasn't approved" unless @comment.save
 
     redirect_to @commentable
-      
   end
 
   def destroy

@@ -12,7 +12,7 @@ class CommentPolicy < ApplicationPolicy
       end
     end
   end
-  
+
   def create?
     user&.customer?
   end
