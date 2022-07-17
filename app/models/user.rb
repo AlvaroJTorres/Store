@@ -16,5 +16,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :phone, presence: true, numericality: true, length: { is: 9 }
 
-  enum role: { customer: 0, admin: 1 }
+  enum role: { customer: 0, admin: 1, support: 2 }
 end
