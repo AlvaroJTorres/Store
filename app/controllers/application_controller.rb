@@ -4,7 +4,7 @@
 # Pundit gem for Authorization and Helpers for the views
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-  include Pundit
+  include Pundit::Authorization
 
   # Callback that defines the parameters to be accepted by the Devise gem when
   # sign_up and update account information
