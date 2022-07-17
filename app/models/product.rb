@@ -41,7 +41,7 @@ class Product < ApplicationRecord
   private
 
   def new_log_update
-    return unless changed_by.admin?
+    return unless changed_by.admin? || changed_by.support?
 
     changes.each do |key, value|
       unless key == 'updated_at'
