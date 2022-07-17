@@ -2,6 +2,13 @@
 
 # Define policies for Products Controllers
 class ProductPolicy < ApplicationPolicy
+  def permitted_attributes
+    if user.support?
+      [:name, :description, :stock]
+    elsif user.admin?
+      [:name, :description, :price, :stock]
+    end
+  end
   # Policy for the create controller
   def create?
     user&.admin?
@@ -9,11 +16,11 @@ class ProductPolicy < ApplicationPolicy
 
   # Policy for the update controller
   def update?
-    create?
+    user&.admin? || user&.support?
   end
 
   # Policy for the destroy controller
   def destroy?
-    create?
+    user&.admin?
   end
 end
