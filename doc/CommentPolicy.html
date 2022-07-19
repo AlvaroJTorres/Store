@@ -73,6 +73,8 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-create-3F">#create?</a>
+    <li ><a href="#method-i-destroy-3F">#destroy?</a>
+    <li ><a href="#method-i-update-3F">#update?</a>
   </ul>
 </div>
 
@@ -86,7 +88,7 @@
 
   <section class="description">
     
-<p>Define policies for Comments Controllers</p>
+<p>Define policies for <a href="Comments.html"><code>Comments</code></a> Controllers</p>
 
   </section>
 
@@ -109,12 +111,54 @@
         </div>
 
         <div class="method-description">
-          <p>Policy for the create controller</p>
+          
 
           <div class="method-source-code" id="create-3F-source">
-            <pre><span class="ruby-comment"># File app/policies/comment_policy.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/policies/comment_policy.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create?</span>
   <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">customer?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-destroy-3F" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">destroy?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="destroy-3F-source">
+            <pre><span class="ruby-comment"># File app/policies/comment_policy.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy?</span>
+  <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">admin?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-update-3F" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">update?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="update-3F-source">
+            <pre><span class="ruby-comment"># File app/policies/comment_policy.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update?</span>
+  <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">admin?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">support?</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

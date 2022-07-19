@@ -86,7 +86,7 @@
 
   <section class="description">
     
-<p>Define the Controllers required for the Logs endpoints</p>
+<p>Define the Controllers required for the <a href="Logs.html"><code>Logs</code></a> endpoints</p>
 
   </section>
 
@@ -114,7 +114,7 @@
           <div class="method-source-code" id="index-source">
             <pre><span class="ruby-comment"># File app/controllers/logs_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
-  <span class="ruby-ivar">@logs</span> = <span class="ruby-identifier">authorize</span> <span class="ruby-constant">Log</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@logs</span> = <span class="ruby-identifier">authorize</span> <span class="ruby-constant">Logs</span><span class="ruby-operator">::</span><span class="ruby-constant">LogIndexService</span>.<span class="ruby-identifier">call</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

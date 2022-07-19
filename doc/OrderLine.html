@@ -67,15 +67,6 @@
     
     
     
-<!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
-    <li ><a href="#method-i-check_stock">#check_stock</a>
-  </ul>
-</div>
-
   </div>
 </nav>
 
@@ -95,34 +86,6 @@
 
 
 
-
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-      <div id="method-i-check_stock" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">check_stock</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that add an error if the product available_stock? method returns a false</p>
-
-          <div class="method-source-code" id="check_stock-source">
-            <pre><span class="ruby-comment"># File app/models/order_line.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_stock</span>
-  <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:quantity</span>, <span class="ruby-value">:amount</span>, <span class="ruby-value">message:</span> <span class="ruby-string">&#39;Not enough stock&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">product</span>.<span class="ruby-identifier">available_stock?</span>(<span class="ruby-identifier">quantity</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
 
   </section>
 </main>

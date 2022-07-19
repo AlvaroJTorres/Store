@@ -73,6 +73,8 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-create">#create</a>
+    <li ><a href="#method-i-destroy">#destroy</a>
+    <li ><a href="#method-i-update">#update</a>
   </ul>
 </div>
 
@@ -86,7 +88,7 @@
 
   <section class="description">
     
-<p>Define the Controllers required for the Comments endpoints</p>
+<p>Define the Controllers required for the <a href="Comments.html"><code>Comments</code></a> endpoints</p>
 
   </section>
 
@@ -112,12 +114,55 @@
           <p>Method that responds to the create request for a new comment</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
-  <span class="ruby-ivar">@comment</span> = <span class="ruby-identifier">authorize</span> <span class="ruby-ivar">@commentable</span>.<span class="ruby-identifier">comments</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">comments_params</span>)
-  <span class="ruby-ivar">@comment</span>.<span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:alert</span>] = <span class="ruby-string">&quot;Comment wasn&#39;t created&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">Comments</span><span class="ruby-operator">::</span><span class="ruby-constant">CommentCreatorService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">comment_params</span>, <span class="ruby-ivar">@commentable</span>,
+                                                                                       <span class="ruby-identifier">current_user</span>)
 
-  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:alert</span>] = <span class="ruby-string">&quot;Comment wasn&#39;t created&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@comment</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@commentable</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-destroy" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that responds to the destroy request for a comment</p>
+
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy</span>
+  <span class="ruby-constant">Comments</span><span class="ruby-operator">::</span><span class="ruby-constant">CommentDestroyService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@comment</span>)
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@commentable</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-update" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Method that responds to the update request for a comment</p>
+
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:alert</span>] = <span class="ruby-string">&quot;Comment wasn&#39;t approved&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">Comments</span><span class="ruby-operator">::</span><span class="ruby-constant">CommentUpdaterService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@comment</span>)
 
   <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@commentable</span>
 <span class="ruby-keyword">end</span></pre>

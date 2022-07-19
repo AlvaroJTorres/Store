@@ -72,14 +72,9 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-c-filter_by_letter">::filter_by_letter</a>
-    <li ><a href="#method-c-filter_by_likes_count">::filter_by_likes_count</a>
-    <li ><a href="#method-c-filter_by_tag">::filter_by_tag</a>
-    <li ><a href="#method-c-filter_by_term">::filter_by_term</a>
     <li ><a href="#method-i-available_stock-3F">#available_stock?</a>
     <li ><a href="#method-i-find_like">#find_like</a>
     <li ><a href="#method-i-liked_by-3F">#liked_by?</a>
-    <li ><a href="#method-i-update_stock">#update_stock</a>
   </ul>
 </div>
 
@@ -119,97 +114,6 @@
     </section>
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
-
-      <div id="method-c-filter_by_letter" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">filter_by_letter</span><span
-            class="method-args">(direction)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that filters the products by alphabetical order</p>
-
-          <div class="method-source-code" id="filter_by_letter-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_letter</span>(<span class="ruby-identifier">direction</span>)
-  <span class="ruby-identifier">order</span>(<span class="ruby-node">&quot;name #{direction}&quot;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-c-filter_by_likes_count" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">filter_by_likes_count</span><span
-            class="method-args">(direction)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that filters the products by the amount of likes</p>
-
-          <div class="method-source-code" id="filter_by_likes_count-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_likes_count</span>(<span class="ruby-identifier">direction</span>)
-  <span class="ruby-identifier">order</span>(<span class="ruby-node">&quot;likes_count #{direction}&quot;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-c-filter_by_tag" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">filter_by_tag</span><span
-            class="method-args">(tag)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that filters the list of products by its tags</p>
-
-          <div class="method-source-code" id="filter_by_tag-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 26</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_tag</span>(<span class="ruby-identifier">tag</span>)
-  <span class="ruby-identifier">joins</span>(<span class="ruby-value">products_tags:</span> <span class="ruby-value">:tag</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">tags:</span> { <span class="ruby-value">id:</span> <span class="ruby-identifier">tag</span> })
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-c-filter_by_term" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">filter_by_term</span><span
-            class="method-args">(term)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that filters the list of products per name</p>
-
-          <div class="method-source-code" id="filter_by_term-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">filter_by_term</span>(<span class="ruby-identifier">term</span>)
-  <span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;products.name LIKE ?&#39;</span>, <span class="ruby-node">&quot;%#{term}%&quot;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
@@ -223,10 +127,10 @@
         </div>
 
         <div class="method-description">
-          <p>Method that checks if the quantity passed on the order_line is  less than the stock of the product</p>
+          <p>Method that checks if the quantity passed on the order_line is less than the stock of the product</p>
 
           <div class="method-source-code" id="available_stock-3F-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">available_stock?</span>(<span class="ruby-identifier">quantity</span>)
   <span class="ruby-identifier">stock</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">quantity</span>
 <span class="ruby-keyword">end</span></pre>
@@ -247,7 +151,7 @@
           <p>Method that finds which user liked the current product</p>
 
           <div class="method-source-code" id="find_like-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 46</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find_like</span>(<span class="ruby-identifier">current_user</span>)
   <span class="ruby-identifier">likes</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -268,30 +172,9 @@
           <p>Method that checks which user liked the current product</p>
 
           <div class="method-source-code" id="liked_by-3F-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 41</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">liked_by?</span>(<span class="ruby-identifier">current_user</span>)
   <span class="ruby-identifier">likes</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">exists?</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-update_stock" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">update_stock</span><span
-            class="method-args">(quantity)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that updates the stock of a product after the order is saved</p>
-
-          <div class="method-source-code" id="update_stock-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_stock</span>(<span class="ruby-identifier">quantity</span>)
-  <span class="ruby-keyword">self</span>[<span class="ruby-value">:stock</span>] <span class="ruby-operator">-=</span> <span class="ruby-identifier">quantity</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

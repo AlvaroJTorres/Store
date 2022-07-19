@@ -87,7 +87,7 @@
 
   <section class="description">
     
-<p>Define the Controllers required for the Likes endpoints</p>
+<p>Define the Controllers required for the <a href="Likes.html"><code>Likes</code></a> endpoints</p>
 
   </section>
 
@@ -113,13 +113,11 @@
           <p>Method that responds to the create request for a new like</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/likes_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/likes_controller.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
-  <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
-  <span class="ruby-identifier">authorize</span> <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">likes</span>
-  <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">likes</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">like</span> = <span class="ruby-identifier">authorize</span> <span class="ruby-constant">Likes</span><span class="ruby-operator">::</span><span class="ruby-constant">LikeCreatorService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>], <span class="ruby-identifier">current_user</span>)
 
-  <span class="ruby-identifier">redirect_back</span> <span class="ruby-value">fallback_location:</span> <span class="ruby-identifier">products_path</span>
+  <span class="ruby-identifier">redirect_back</span> <span class="ruby-value">fallback_location:</span> <span class="ruby-identifier">products_path</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">like</span>.<span class="ruby-identifier">save</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -140,9 +138,7 @@
           <div class="method-source-code" id="destroy-source">
             <pre><span class="ruby-comment"># File app/controllers/likes_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy</span>
-  <span class="ruby-identifier">like</span> = <span class="ruby-constant">Like</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-  <span class="ruby-identifier">authorize</span> <span class="ruby-identifier">like</span>
-  <span class="ruby-identifier">like</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">Likes</span><span class="ruby-operator">::</span><span class="ruby-constant">LikeDestroyService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@like</span>)
 
   <span class="ruby-identifier">redirect_back</span> <span class="ruby-value">fallback_location:</span> <span class="ruby-identifier">products_path</span>
 <span class="ruby-keyword">end</span></pre>

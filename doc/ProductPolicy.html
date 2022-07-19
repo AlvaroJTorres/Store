@@ -74,6 +74,7 @@
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-create-3F">#create?</a>
     <li ><a href="#method-i-destroy-3F">#destroy?</a>
+    <li ><a href="#method-i-permitted_attributes">#permitted_attributes</a>
     <li ><a href="#method-i-update-3F">#update?</a>
   </ul>
 </div>
@@ -88,7 +89,7 @@
 
   <section class="description">
     
-<p>Define policies for Products Controllers</p>
+<p>Define policies for <a href="Products.html"><code>Products</code></a> Controllers</p>
 
   </section>
 
@@ -114,7 +115,7 @@
           <p>Policy for the create controller</p>
 
           <div class="method-source-code" id="create-3F-source">
-            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create?</span>
   <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">admin?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -135,9 +136,34 @@
           <p>Policy for the destroy controller</p>
 
           <div class="method-source-code" id="destroy-3F-source">
-            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy?</span>
-  <span class="ruby-identifier">create?</span>
+  <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">admin?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-permitted_attributes" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">permitted_attributes</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="permitted_attributes-source">
+            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">permitted_attributes</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">support?</span>
+    <span class="ruby-node">%i[name description stock]</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">admin?</span>
+    <span class="ruby-node">%i[name description price stock]</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -156,9 +182,9 @@
           <p>Policy for the update controller</p>
 
           <div class="method-source-code" id="update-3F-source">
-            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/policies/product_policy.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update?</span>
-  <span class="ruby-identifier">create?</span>
+  <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">admin?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span>&amp;.<span class="ruby-identifier">support?</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -67,15 +67,6 @@
     
     
     
-<!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
-    <li ><a href="#method-i-add_product">#add_product</a>
-  </ul>
-</div>
-
   </div>
 </nav>
 
@@ -95,42 +86,6 @@
 
 
 
-
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-      <div id="method-i-add_product" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">add_product</span><span
-            class="method-args">(params)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Method that defines that if an order_line of a product already exists it  updates the quantity value of the order_line, else it creates a new instance of an order_line for the product. Recieves all the params send to the order_line</p>
-
-          <div class="method-source-code" id="add_product-source">
-            <pre><span class="ruby-comment"># File app/models/order.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_product</span>(<span class="ruby-identifier">params</span>)
-  <span class="ruby-identifier">current_order_line</span> = <span class="ruby-identifier">order_lines</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">product_id:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_order_line</span>
-    <span class="ruby-identifier">current_order_line</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:quantity</span>].<span class="ruby-identifier">to_i</span>
-
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">current_order_line</span> = <span class="ruby-identifier">order_lines</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>)
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">current_order_line</span>.<span class="ruby-identifier">save</span>
-  <span class="ruby-identifier">current_order_line</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
 
   </section>
 </main>

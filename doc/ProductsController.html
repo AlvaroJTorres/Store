@@ -118,12 +118,9 @@
           <p>Method that respond to the create request to create a new product</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
-  <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">product_params</span>)
-  <span class="ruby-identifier">authorize</span> <span class="ruby-ivar">@product</span>
-
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Products</span><span class="ruby-operator">::</span><span class="ruby-constant">ProductCreatorService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">product_params</span>)
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">products_path</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>
@@ -146,9 +143,10 @@
           <p>Method that responds to the delete request and removes a product from the database</p>
 
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 57</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy</span>
-  <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">Products</span><span class="ruby-operator">::</span><span class="ruby-constant">ProductDestroyService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@product</span>)
+
   <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">products_path</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -168,7 +166,7 @@
           <p>Method that allows the render of the edit form to change the product</p>
 
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">edit</span>; <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -187,12 +185,9 @@
           <p>Method that responds to the get request to list all the records of products</p>
 
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 10</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
-  <span class="ruby-ivar">@products</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-identifier">filtering_params</span>(<span class="ruby-identifier">params</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-    <span class="ruby-ivar">@products</span> = <span class="ruby-ivar">@products</span>.<span class="ruby-identifier">public_send</span>(<span class="ruby-node">&quot;filter_by_#{key}&quot;</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">present?</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@products</span> = <span class="ruby-constant">Products</span><span class="ruby-operator">::</span><span class="ruby-constant">ProductIndexService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">query_params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -211,7 +206,7 @@
           <p>Method that allows the render of the new form for a new product</p>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">new</span>
   <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -232,9 +227,9 @@
           <p>Method that responds to the get request to show an specific product</p>
 
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">show</span>
-  <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Products</span><span class="ruby-operator">::</span><span class="ruby-constant">ProductFinderService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -253,13 +248,9 @@
           <p>Method that responds to the update request to check if the user is an admin and changes the stock and price params</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 44</span>
+            <pre><span class="ruby-comment"># File app/controllers/products_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
-  <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">changed_by</span> = <span class="ruby-identifier">current_user</span>
-  <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">stock</span> = <span class="ruby-identifier">product_params</span>[<span class="ruby-value">:stock</span>]
-  <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">price</span> = <span class="ruby-identifier">product_params</span>[<span class="ruby-value">:price</span>]
-
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Products</span><span class="ruby-operator">::</span><span class="ruby-constant">ProductUpdaterService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@product</span>, <span class="ruby-identifier">permitted_attributes</span>(<span class="ruby-ivar">@product</span>), <span class="ruby-identifier">current_user</span>)
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">products_path</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span>
