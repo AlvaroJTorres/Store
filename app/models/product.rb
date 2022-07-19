@@ -13,10 +13,6 @@ class Product < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :tags
 
-  validates :name, presence: true, uniqueness: true
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :stock, presence: true, numericality: { greater_than: 0 }
-
   # Method that checks which user liked the current product
   def liked_by?(current_user)
     likes.where(user_id: current_user.id).exists?
@@ -31,11 +27,6 @@ class Product < ApplicationRecord
   # less than the stock of the product
   def available_stock?(quantity)
     stock >= quantity
-  end
-
-  # Method that updates the stock of a product after the order is saved
-  def update_stock(quantity)
-    self[:stock] -= quantity
   end
 
   private
