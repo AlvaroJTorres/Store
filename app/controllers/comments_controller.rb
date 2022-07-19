@@ -2,46 +2,50 @@
 
 # Define the Controllers required for the Comments endpoints
 class CommentsController < ApplicationController
+  before_action :pundit_authorize
   before_action :set_commentable
   before_action :set_comment, only: %i[update destroy]
 
   # Method that responds to the create request for a new comment
   def create
-    @comment = authorize @commentable.comments.new(comments_params)
-    @comment.user = current_user
-
-    flash[:alert] = "Comment wasn't created" unless @comment.save
+    flash[:alert] = "Comment wasn't created" unless Comments::CommentCreatorService.call(comment_params, @commentable,
+                                                                                         current_user)
 
     redirect_to @commentable
   end
 
+  # Method that responds to the update request for a comment
   def update
-    @comment.approved = 1
-    flash[:alert] = "Comment wasn't approved" unless @comment.save
+    flash[:alert] = "Comment wasn't approved" unless Comments::CommentUpdaterService.call(@comment)
 
     redirect_to @commentable
   end
 
+  # Method that responds to the destroy request for a comment
   def destroy
-    @comment.destroy
+    Comments::CommentDestroyService.call(@comment)
     redirect_to @commentable
   end
 
   private
 
-  def comments_params
+  def comment_params
     params.require(:comment).permit(:body, :rate, :user_id)
+  end
+
+  def pundit_authorize
+    authorize Comment
   end
 
   def set_commentable
     @commentable = if params[:product_id]
-                     Product.find(params[:product_id])
+                     Products::ProductFinderService.call(params[:product_id])
                    elsif params[:order_id]
-                     Order.find(params[:order_id])
+                     Orders::OrderFinderService.call(params[:order_id])
                    end
   end
 
   def set_comment
-    @comment = authorize @commentable.comments.find(params[:id])
+    @comment = Comments::CommentFinderService.call(@commentable, params[:id])
   end
 end
