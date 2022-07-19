@@ -9,15 +9,6 @@ class OrderLine < ApplicationRecord
   belongs_to :order
   belongs_to :product
 
-  validates :quantity, presence: true, numericality: { greater_than: 0 }
-
-  validate :check_stock
-
-  # Method that add an error if the product available_stock? method returns a false
-  def check_stock
-    errors.add(:quantity, :amount, message: 'Not enough stock') unless product.available_stock?(quantity)
-  end
-
   private
 
   def set_total
