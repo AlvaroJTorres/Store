@@ -1,21 +1,24 @@
 AllCops:
   Exclude:
-    - 'db/**/**'
-    - 'docs/**/**'
-    - 'specific-views-images/**/**'
-    - 'specific-views-pdf/**/**'
-    - 'vendor/**/**'
-    - 'bin/**/**'
-    - 'tmp/**/**'
-    - 'node_modules/**/**'
-    - 'config/**/**'
-    - 'Guardfile'
+    - "db/**/**"
+    - "docs/**/**"
+    - "specific-views-images/**/**"
+    - "specific-views-pdf/**/**"
+    - "vendor/**/**"
+    - "bin/**/**"
+    - "tmp/**/**"
+    - "node_modules/**/**"
+    - "config/**/**"
+    - "Guardfile"
 Metrics/ClassLength:
   Exclude:
-    - 'test/**/**'
+    - "test/**/**"
 Layout/LineLength:
   Max: 120
   Exclude:
-    - 'test/**/**'
+    - "test/**/**"
 Metrics/MethodLength:
   Max: 15
+Lint/MissingSuper:
+  Exclude:
+    - "app/services/**/*"
