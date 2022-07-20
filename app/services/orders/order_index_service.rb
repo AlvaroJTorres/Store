@@ -9,7 +9,7 @@ module Orders
     end
 
     def call
-      orders_scope
+      @current_user.customer? ? orders_scope : Order.all
     end
 
     private

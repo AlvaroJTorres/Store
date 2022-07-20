@@ -32,10 +32,8 @@
         <% end %>
       </p>
       <p>
-        <% if current_user&.customer? %>
+        <% if current_user %>
           <h2 class="text-3xl"><%= link_to "See Orders", orders_path, { class: button_style } %></h2>
-        <% elsif current_user&.admin? %>
-          <h2>Admins can't make orders</h2>
         <% else %>
           <h2>Log in to see your orders</h2>
         <% end %>

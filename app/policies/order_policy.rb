@@ -4,12 +4,12 @@
 class OrderPolicy < ApplicationPolicy
   # Policy for the index controller
   def index?
-    user&.customer?
+    true
   end
 
   # Policy for the show controller
   def show?
-    index?
+    true
   end
 
   # Policy for the cart controller
@@ -19,6 +19,6 @@ class OrderPolicy < ApplicationPolicy
 
   # Policy for the update controller
   def update?
-    index?
+    user&.customer?
   end
 end
