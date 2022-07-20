@@ -9,13 +9,13 @@ module Products
     end
 
     def call
-      product_form = ProductForm.new(@params)
+      validations
 
-      if product_form.valid?
-        Product.create(@params)
-      else
-        false
-      end
+      @product_form.validate!.save
+    end
+
+    def validations
+      @product_form = ProductCreateForm.new(@params)
     end
   end
 end
