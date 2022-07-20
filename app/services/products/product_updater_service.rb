@@ -4,6 +4,7 @@ module Products
   # Service Object to Update a Product
   class ProductUpdaterService < ApplicationService
     def initialize(product, params, user)
+      super()
       @product = product
       @params = params
       @user = user

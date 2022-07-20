@@ -4,6 +4,7 @@ module Products
   # Service Object to List all Products
   class ProductIndexService < ApplicationService
     def initialize(params)
+      super()
       @params = params
     end
 

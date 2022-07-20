@@ -4,6 +4,7 @@ module OrderLines
   # Service Object to Find a Order Line
   class OrderLineFinderService < ApplicationService
     def initialize(id)
+      super()
       @id = id
     end
 

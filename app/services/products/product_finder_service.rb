@@ -4,6 +4,7 @@ module Products
   # Service Object to Find a Product
   class ProductFinderService < ApplicationService
     def initialize(id)
+      super()
       @id = id
     end
 

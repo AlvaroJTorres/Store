@@ -4,6 +4,7 @@ module OrderLines
   # Service Object to Create a Order Line
   class OrderLineCreatorService < ApplicationService
     def initialize(order, params)
+      super()
       @order = order
       @params = params
     end

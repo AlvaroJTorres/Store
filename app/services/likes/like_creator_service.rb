@@ -4,6 +4,7 @@ module Likes
   # Service Object to Create a Like
   class LikeCreatorService < ApplicationService
     def initialize(product_id, user)
+      super()
       @product_id = product_id
       @user = user
     end

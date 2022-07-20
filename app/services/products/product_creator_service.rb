@@ -4,6 +4,7 @@ module Products
   # Service Object to Create a Product
   class ProductCreatorService < ApplicationService
     def initialize(params)
+      super()
       @params = params
     end
 

@@ -4,6 +4,7 @@ module Orders
   # Service Object to Lists all Orders for a user
   class OrderIndexService < ApplicationService
     def initialize(current_user)
+      super()
       @current_user = current_user
     end
 

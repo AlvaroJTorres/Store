@@ -4,6 +4,7 @@ module Orders
   # Service Object to Update an Order to closed it for the user
   class OrderUpdaterService < ApplicationService
     def initialize(order, user)
+      super()
       @order = order
       @user = user
     end

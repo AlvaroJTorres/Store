@@ -4,6 +4,7 @@ module Comments
   # Service Object To Find a Comment
   class CommentFinderService < ApplicationService
     def initialize(commentable, comment_id)
+      super()
       @commentable = commentable
       @comment_id = comment_id
     end

@@ -4,6 +4,7 @@ module Comments
   # Service Object to Update a Comment
   class CommentUpdaterService < ApplicationService
     def initialize(comment)
+      super()
       @comment = comment
     end
 

@@ -4,6 +4,7 @@ module Likes
   # Service Object to Destroy a Like
   class LikeDestroyService < ApplicationService
     def initialize(like)
+      super()
       @like = like
     end
 

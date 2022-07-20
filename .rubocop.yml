@@ -19,6 +19,3 @@ Layout/LineLength:
     - "test/**/**"
 Metrics/MethodLength:
   Max: 15
-Lint/MissingSuper:
-  Exclude:
-    - "app/services/**/*"

@@ -3,8 +3,6 @@
 module Logs
   # Service Object to List all Logs
   class LogIndexService < ApplicationService
-    def initialize; end
-
     def call
       Log.all
     end

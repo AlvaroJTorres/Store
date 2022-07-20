@@ -4,6 +4,7 @@ module Likes
   # Service Object to Find a Like
   class LikeFinderService < ApplicationService
     def initialize(id)
+      super()
       @id = id
     end
 

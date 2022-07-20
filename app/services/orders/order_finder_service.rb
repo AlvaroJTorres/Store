@@ -4,6 +4,7 @@ module Orders
   # Service Object to Find an Order
   class OrderFinderService < ApplicationService
     def initialize(id)
+      super()
       @id = id
     end
 
