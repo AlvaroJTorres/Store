@@ -24,6 +24,9 @@
 
   <% if policy(product).update? %>
     <%= link_to "Edit product", edit_product_path(product), { class: button_style } %>
+  <% end %>
+
+  <% if policy(product).destroy? %>
     <%= button_to "Delete product", product_path(product), { method: :delete, class: button_style } %>
   <% end %>
 
