@@ -13,7 +13,7 @@ class ProductCreateForm
   # Method that validates uniqueness of a name
   def unique_name
     return unless name
-    
+
     errors.add(:unique_name, 'Name already taken') if name.downcase == Product.find_by(name:)&.name
   end
 

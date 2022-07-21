@@ -11,8 +11,8 @@ module Products
     end
 
     def call
-      @form = ProductForm.new(@params)
-
+      @form = ProductUpdateForm.new(@params)
+      
       if @form.valid?
         @product.changed_by = @user
 
