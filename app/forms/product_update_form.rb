@@ -14,7 +14,7 @@ class ProductUpdateForm
     return unless name
 
     check_products = Product.where.not(id:).find_by(name:)
-    
+
     errors.add(:unique_name, 'Name already taken') if name.downcase == check_products&.name
   end
 end

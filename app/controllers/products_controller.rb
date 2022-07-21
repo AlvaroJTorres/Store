@@ -37,7 +37,8 @@ class ProductsController < ApplicationController
   # Method that responds to the update request to check if the user is an admin
   # and changes the stock and price params
   def update
-    if Products::ProductUpdaterService.call(@product, permitted_attributes(@product).merge(id: params[:id]), current_user)
+    if Products::ProductUpdaterService.call(@product, permitted_attributes(@product).merge(id: params[:id]),
+                                            current_user)
       redirect_to products_path
     else
       render :edit

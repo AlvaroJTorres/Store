@@ -12,7 +12,7 @@ module Products
 
     def call
       @form = ProductUpdateForm.new(@params)
-      
+
       if @form.valid?
         @product.changed_by = @user
 
