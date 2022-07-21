@@ -9,7 +9,7 @@ module Products
     end
 
     def call
-      Product.find(@id).decorate
+      Product.find(@id)
     end
   end
 end

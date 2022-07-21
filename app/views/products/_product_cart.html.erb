@@ -1,6 +1,6 @@
 <div class="flex flex-col p-2 gap-2 text-lg border-2 border-slate-300 items-center">
   <p class="text-2xl"><%= product.name.capitalize %></p>
-  <p class="text-xl">$ <%= current_page?(product_path(product)) ? product.price_in_dollars : number_with_precision(product.price, precision: 2) %></p>
+  <p class="text-xl">$ <%= number_with_precision(product.price, precision: 2) %></p>
   <p>Available: <%= product.stock %></p>
 
   <div class="flex gap-2">
