@@ -11,11 +11,20 @@ module Products
     def call
       validations
 
-      @product_form.validate!.save
+      @product = @product_form.validate!
+
+      save
     end
+
+    private
 
     def validations
       @product_form = ProductCreateForm.new(@params)
+    end
+
+    def save
+      @product.save
+      @product
     end
   end
 end
