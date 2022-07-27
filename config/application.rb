@@ -22,5 +22,10 @@ module Store
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoloader = :classic
+
+    Rails.application.reloader.to_prepare do
+      ActiveStorage::Blob
+    end
+    
   end
 end
