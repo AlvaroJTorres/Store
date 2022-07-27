@@ -14,12 +14,19 @@ module Products
       @form = ProductUpdateForm.new(@params)
 
       if @form.valid?
-        @product.changed_by = @user
-
-        @product.update(@params)
+        update
       else
         false
       end
+    end
+
+    private
+
+    def update
+      @product.changed_by = @user
+
+      @product.update(@params)
+      @product
     end
   end
 end
