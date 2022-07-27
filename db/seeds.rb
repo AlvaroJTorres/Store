@@ -68,7 +68,11 @@ products_data.each do |product_data|
     stock: product_data[:stock]
   }
 
-  new_product = Product.create(product)
+  new_product = Product.new(product)
+
+  new_product.avatar.attach(io: File.open('public/images/avatar.png'), filename: 'avatar.png')
+
+  new_product.save
 
   product_data[:tags].each do |tag|
     new_product.tags << Tag.find_by(name: tag)
