@@ -4,9 +4,9 @@
 class ProductPolicy < ApplicationPolicy
   def permitted_attributes
     if user.support?
-      %i[name description stock]
+      %i[name description stock avatar]
     elsif user.admin?
-      %i[name description price stock]
+      %i[name description price stock avatar]
     end
   end
 
