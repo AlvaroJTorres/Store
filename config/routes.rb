@@ -11,6 +11,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
+  namespace :api do
+    namespace :v1 do
+      resources :products do
+        resources :likes, shallow: true, only: %i[create]
+      end
+      resources :order_lines
+      resources :orders
+      post '/authenticate', to: 'authentication#authenticate'
+    end
+  end
+
   concern :commentable do
     resources :comments
   end
