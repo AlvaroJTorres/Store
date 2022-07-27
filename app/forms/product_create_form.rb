@@ -4,7 +4,7 @@
 class ProductCreateForm
   include ActiveModel::Model
 
-  attr_accessor :name, :description, :price, :stock
+  attr_accessor :name, :description, :price, :stock, :avatar
 
   validates :name, presence: true
   validates :price, :stock, presence: true, numericality: { greater_than: 0 }
@@ -28,7 +28,8 @@ class ProductCreateForm
       name: name.downcase,
       description:,
       price:,
-      stock:
+      stock:,
+      avatar:
     }
   end
 end

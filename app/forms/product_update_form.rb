@@ -4,7 +4,7 @@
 class ProductUpdateForm
   include ActiveModel::Model
 
-  attr_accessor :name, :description, :price, :stock, :id
+  attr_accessor :name, :description, :price, :stock, :id, :avatar
 
   validates :price, :stock, numericality: { greater_than: 0 }, allow_nil: true
   validate :unique_name
