@@ -12,6 +12,9 @@ class Product < ApplicationRecord
   has_many :logs, as: :loggable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :tags
+  has_one_attached :avatar do |attachable|
+    attachable.variant :variant, resize_to_limit: [220, 220]
+  end
 
   # Method that checks which user liked the current product
   def liked_by?(current_user)
@@ -27,6 +30,12 @@ class Product < ApplicationRecord
   # less than the stock of the product
   def available_stock?(quantity)
     stock >= quantity
+  end
+
+  def avatar_url
+    return name unless avatar.attached?
+
+    Rails.application.routes.url_helpers.rails_representation_url(avatar.variant(resize: '220x220'), only_path: true)
   end
 
   private
