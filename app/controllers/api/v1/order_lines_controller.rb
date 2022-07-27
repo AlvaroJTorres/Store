@@ -8,7 +8,7 @@ module Api
       before_action :pundit_authorize
 
       def create
-        @order_line = OrderLines::ApiOrderLineCreatorService.call(@order, order_line_params)
+        @order_line = OrderLines::ApiOrderLineCreatorService.call(@order, current_user, order_line_params)
 
         render json: @order_line, status: :created
       end
@@ -24,7 +24,7 @@ module Api
       end
 
       def set_order
-        @order = current_order
+        @order = Order.find_by(user_id: current_user.id, status: 'in_process') || current_order
       end
     end
   end
