@@ -246,6 +246,9 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rswag-ui (2.5.1)
+      actionpack (>= 3.1, < 7.1)
+      railties (>= 3.1, < 7.1)
     rubocop (1.31.2)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -263,6 +266,16 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (4.3.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -285,9 +298,13 @@ GEM
       railties (>= 6.0.0)
     strscan (3.0.3)
     swagger-blocks (3.0.0)
+    swagger_ui_engine (1.1.2)
+      rails (>= 4.2)
+      sass-rails
     tailwindcss-rails (2.0.10-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
+    tilt (2.0.11)
     timeout (0.3.0)
     trailblazer-option (0.1.2)
     turbo-rails (1.1.1)
@@ -343,12 +360,14 @@ DEPENDENCIES
   rails (~> 7.0.3)
   redis (~> 4.0)
   representable
+  rswag-ui
   rubocop
   selenium-webdriver
   simplecov
   sprockets-rails
   stimulus-rails
   swagger-blocks
+  swagger_ui_engine
   tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data

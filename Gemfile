@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.1'
 
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'draper'
@@ -15,7 +15,9 @@ gem 'multi_json'
 gem 'pagy'
 gem 'pundit'
 gem 'representable'
+gem 'rswag-ui'
 gem 'swagger-blocks'
+gem 'swagger_ui_engine'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
