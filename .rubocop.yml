@@ -10,6 +10,7 @@ AllCops:
     - "node_modules/**/**"
     - "config/**/**"
     - "Guardfile"
+    - "app/controllers/api/docs/**"
 Metrics/ClassLength:
   Exclude:
     - "test/**/**"
