@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   resources :logs, only: [:index]
 
   get 'cart', to: 'orders#cart'
+
+  resources :apidocs, only: [:index]
+  get 'json', to: 'apidocs#json'
 end
