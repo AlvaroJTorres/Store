@@ -16,6 +16,7 @@ gem 'pagy'
 gem 'pundit'
 gem 'representable'
 gem 'rswag-ui'
+gem 'sprockets', '~> 3.7.2'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
 
