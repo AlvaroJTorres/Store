@@ -15,10 +15,8 @@ gem 'multi_json'
 gem 'pagy'
 gem 'pundit'
 gem 'representable'
-gem 'rswag-ui'
 gem 'sprockets', '~> 3.7.2'
 gem 'swagger-blocks'
-gem 'swagger_ui_engine'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
