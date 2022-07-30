@@ -1,0 +1,434 @@
+{
+	"id": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+	"name": "Store API",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Authenticate",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"order": [
+				"cad49dbc-1d36-3d27-9bf3-29c8d1c53495"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "1578884a-27aa-d735-e739-15e879e41ea4"
+		},
+		{
+			"name": "Likes",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"order": [
+				"2db88c28-d1b8-e2a6-e1e7-533c1e3be20b"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "b7801248-a275-1e8e-c30e-a33311a7e1af"
+		},
+		{
+			"name": "Order Lines",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"order": [
+				"a00ffef1-dc2a-135f-9762-10c0b93020e1"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "2e18b4d4-d507-64ba-c0eb-5769706e621f"
+		},
+		{
+			"name": "Orders",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"order": [
+				"6db529fd-8f3d-a0af-edfa-d28aaa6a552a",
+				"393257b4-1bd9-bf8a-3131-4869f126549a"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "1c045657-ffa7-0189-d211-8a58ece146eb"
+		},
+		{
+			"name": "Products",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"order": [
+				"c1a95ea1-0760-1536-bd64-8d22c7d9a534",
+				"fe6ae83c-c483-a597-a214-bcf0046f72fb",
+				"f90153e9-f84f-c6cf-d330-994108bb72b1",
+				"95f84db6-b954-f6b8-fc33-2f3046d36aea",
+				"2bc6e5b1-e17e-5265-ba75-91dcfbb10d2c"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "4a2bd317-806d-afd0-aedf-cf1a312d77bc"
+		}
+	],
+	"folders_order": [
+		"1578884a-27aa-d735-e739-15e879e41ea4",
+		"4a2bd317-806d-afd0-aedf-cf1a312d77bc",
+		"2e18b4d4-d507-64ba-c0eb-5769706e621f",
+		"1c045657-ffa7-0189-d211-8a58ece146eb",
+		"b7801248-a275-1e8e-c30e-a33311a7e1af"
+	],
+	"timestamp": 1658895455156,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2bc6e5b1-e17e-5265-ba75-91dcfbb10d2c",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFsdmFyb0BtYWlsLmNvbSJ9.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFsdmFyb0BtYWlsLmNvbSJ9.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/products/31",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete Product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895624298,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "4a2bd317-806d-afd0-aedf-cf1a312d77bc"
+		},
+		{
+			"id": "2db88c28-d1b8-e2a6-e1e7-533c1e3be20b",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/products/4/likes",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "New Like",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895635483,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "b7801248-a275-1e8e-c30e-a33311a7e1af",
+			"rawModeData": ""
+		},
+		{
+			"id": "393257b4-1bd9-bf8a-3131-4869f126549a",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/orders/1",
+			"folder": "1c045657-ffa7-0189-d211-8a58ece146eb",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1658951076732,
+			"name": "Checkout",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"responses": []
+		},
+		{
+			"id": "6db529fd-8f3d-a0af-edfa-d28aaa6a552a",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InRlc3QyQG1haWwuY29tIn0.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InRlc3QyQG1haWwuY29tIn0.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/orders",
+			"folder": "1c045657-ffa7-0189-d211-8a58ece146eb",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1658951073686,
+			"name": "Orders",
+			"description": "",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"responses": []
+		},
+		{
+			"id": "95f84db6-b954-f6b8-fc33-2f3046d36aea",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InN1cHBvcnRAbWFpbC5jb20ifQ.\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InN1cHBvcnRAbWFpbC5jb20ifQ.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/products/33",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PATCH",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Update Product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895614290,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "4a2bd317-806d-afd0-aedf-cf1a312d77bc",
+			"rawModeData": "{\n\t\"price\": 100,\n\t\"stock\": 300\n}"
+		},
+		{
+			"id": "a00ffef1-dc2a-135f-9762-10c0b93020e1",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InRlc3QyQG1haWwuY29tIn0.\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InRlc3QyQG1haWwuY29tIn0.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/order_lines",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "New Order Line",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895643730,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2e18b4d4-d507-64ba-c0eb-5769706e621f",
+			"rawModeData": "{\n\t\"product_id\": 3,\n\t\"quantity\": 10\n}"
+		},
+		{
+			"id": "c1a95ea1-0760-1536-bd64-8d22c7d9a534",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/api/v1/products?page=2",
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": null,
+			"dataMode": "params",
+			"name": "Products",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895555836,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "4a2bd317-806d-afd0-aedf-cf1a312d77bc"
+		},
+		{
+			"id": "cad49dbc-1d36-3d27-9bf3-29c8d1c53495",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/authenticate",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Authenticate",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895468334,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "cad49dbc-1d36-3d27-9bf3-29c8d1c53495",
+			"folder": "1578884a-27aa-d735-e739-15e879e41ea4",
+			"rawModeData": "{\n\t\"email\": \"test1@mail.com\",\n\t\"password\": \"123456\"\n}"
+		},
+		{
+			"id": "f90153e9-f84f-c6cf-d330-994108bb72b1",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFsdmFyb0BtYWlsLmNvbSJ9.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFsdmFyb0BtYWlsLmNvbSJ9.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/products",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": [
+				{
+					"key": "product[avatar]",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "product[name]",
+					"value": "New Layssss",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[price]",
+					"value": "10",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[stock]",
+					"value": "100",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "New Product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895604791,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "4a2bd317-806d-afd0-aedf-cf1a312d77bc"
+		},
+		{
+			"id": "fe6ae83c-c483-a597-a214-bcf0046f72fb",
+			"headers": "Authorization: Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InRlc3QxQG1haWwuY29tIn0.",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/v1/products/35",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e54c00ab-769f-96f9-f1b8-e112dd68942a",
+			"data": null,
+			"dataMode": "params",
+			"name": "Product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1658895567899,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "4a2bd317-806d-afd0-aedf-cf1a312d77bc"
+		}
+	]
+}
