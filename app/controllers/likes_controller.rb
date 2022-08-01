@@ -8,12 +8,12 @@ class LikesController < ApplicationController
   def create
     like = authorize Likes::LikeCreatorService.call(params[:product_id], current_user)
 
-    redirect_back fallback_location: products_path if like.save
+    redirect_back fallback_location: products_path if like
   end
 
   # Method that responds to the delete request to delete a like from a product
   def destroy
-    Likes::LikeDestroyService.call(@like)
+    Likes::LikeDestroyService.call(@like, current_user)
 
     redirect_back fallback_location: products_path
   end
