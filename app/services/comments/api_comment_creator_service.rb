@@ -3,17 +3,16 @@
 module Comments
   # Service Object to Create a Comment on API
   class ApiCommentCreatorService < CommentCreatorService
-
     def call
       comment_form = CommentForm.new(@params)
 
-      if comment_form.valid?
-        comment = @commentable.comments.new(@params)
-        comment.user = @user
+      return unless comment_form.valid?
 
-        comment.save
-        CommentRepresenter.new(comment)
-      end
+      comment = @commentable.comments.new(@params)
+      comment.user = @user
+
+      comment.save
+      CommentRepresenter.new(comment)
     end
   end
 end
