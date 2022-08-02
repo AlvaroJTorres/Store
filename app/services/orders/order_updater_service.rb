@@ -27,6 +27,7 @@ module Orders
         product = Product.find(order_line.product_id)
         product.changed_by = user
         product.stock -= order_line.quantity
+        ProductMailer.with(product: product).alert_stock_email.deliver_later if product.stock <= 3
         product.save
       end
     end
