@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear Customer <%= @user.first_name %>,</h1>
+    <p>
+      The product <%= @product.name%> is running low
+    </p>
+    <p>
+      <%= image_tag @product.avatar %>
+    </p>
+    <p>Kind regards</p>
+  </body>
+</html>
