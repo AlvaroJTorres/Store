@@ -14,5 +14,9 @@ FactoryBot.define do
     trait :for_order do
       association :commentable, factory: :order
     end
+
+    trait :for_user do
+      association :commentable, factory: :user
+    end
   end
 end
