@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Mailers for Products
 class ProductMailer < ApplicationMailer
   def alert_stock_email
     @product = params[:product]

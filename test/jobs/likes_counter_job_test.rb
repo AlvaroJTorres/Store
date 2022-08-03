@@ -11,7 +11,7 @@ class LikesCounterJobTest < ActiveJob::TestCase
 
   test 'the counter of likes increases' do
     LikesCounterJob.perform_now(@product.id, @user)
-    
+
     @product.reload
 
     assert_equal(@product.likes.count, @product.likes_count)

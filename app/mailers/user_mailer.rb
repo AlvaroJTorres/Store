@@ -1,5 +1,6 @@
-# app/mailers/user_mailer.rb
+# frozen_string_literal: true
 
+# app/mailers/user_mailer.rb
 class UserMailer < Devise::Mailer
   helper :application
   include Devise::Controllers::UrlHelpers
@@ -11,7 +12,6 @@ class UserMailer < Devise::Mailer
   end
 
   private
-
 
   def create_reset_password_token(user)
     raw, hashed = Devise.token_generator.generate(User, :reset_password_token)

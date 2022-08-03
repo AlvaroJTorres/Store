@@ -19,7 +19,6 @@ module Api
 
       # Method that responds to the create request for a new User
       def create
-        byebug
         @user = Users::ApiUserCreatorService.call(user_params)
 
         if @user

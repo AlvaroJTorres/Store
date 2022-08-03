@@ -9,11 +9,9 @@ module Users
     end
 
     def call
-      byebug
       user_form = UserForm.new(@params)
 
       if user_form.valid?
-        byebug
         new_user = user_form.create!
 
         UserRepresenter.new(new_user)

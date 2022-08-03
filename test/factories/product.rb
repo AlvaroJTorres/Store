@@ -7,6 +7,6 @@ FactoryBot.define do
     price { 10.00 }
     stock { 100 }
     likes_count { 0 }
-    avatar { Rack::Test::UploadedFile.new("public/images/avatar.png", 'image/png') }
+    avatar { Rack::Test::UploadedFile.new('public/images/avatar.png', 'image/png') }
   end
 end
