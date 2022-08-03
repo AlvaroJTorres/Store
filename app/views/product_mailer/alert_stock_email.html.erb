@@ -8,7 +8,7 @@
       The product <%= @product.name%> is running low
     </p>
     <p>
-      <%= image_tag @product.avatar %>
+      <%= image_tag @product.avatar.variant(resize_to_limit: [220, 200]) if @product.avatar.attached? %>
     </p>
     <p>Kind regards</p>
   </body>
