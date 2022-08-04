@@ -9,4 +9,5 @@ class UserRepresenter < Representable::Decorator
   property :first_name
   property :last_name
   property :role
+  property :deleted_at
 end
