@@ -19,7 +19,9 @@ class OrderLineForm
     errors.add(:quantity, :amount, message: 'Not enough stock') unless product.available_stock?(quantity.to_i)
   end
 
-  def validate_product  
-    errors.add(:product_id, :deleted, message: 'Product not found') unless Product.where('deleted_at IS NULL').find_by(id: product_id)
+  def validate_product
+    return if Product.where('deleted_at IS NULL').find_by(id: product_id)
+
+    errors.add(:product_id, :deleted, message: 'Product not found')
   end
 end

@@ -8,11 +8,11 @@ module Comments
 
       if comment_form.valid?
 
-      comment = @commentable.comments.new(@params)
-      comment.user = @user
+        comment = @commentable.comments.new(@params)
+        comment.user = @user
 
-      comment.save
-      CommentRepresenter.new(comment)
+        comment.save
+        CommentRepresenter.new(comment)
       else
         comment_form
       end

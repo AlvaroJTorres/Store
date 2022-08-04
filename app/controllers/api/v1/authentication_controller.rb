@@ -11,7 +11,7 @@ module Api
         if token
           render json: { token: }, status: :ok
         else
-          render json: {error: "Invalid user"}, status: :unauthorized
+          render json: { error: 'Invalid user' }, status: :unauthorized
         end
       end
 

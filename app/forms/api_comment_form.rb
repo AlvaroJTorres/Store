@@ -11,7 +11,9 @@ class ApiCommentForm
 
   validate :validate_user
 
-  def validate_user 
-    errors.add(:user_id, :deleted, message: 'User not found') unless User.where('deleted_at IS NULL').find_by(id: user_id)
+  def validate_user
+    return if User.where('deleted_at IS NULL').find_by(id: user_id)
+
+    errors.add(:user_id, :deleted, message: 'User not found')
   end
 end

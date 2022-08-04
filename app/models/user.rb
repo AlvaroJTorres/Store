@@ -9,11 +9,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def active_for_authentication?
-    super and !self.deleted_at?
-  end 
+    super and !deleted_at?
+  end
 
   def inactive_message
-    "User does not exists."
+    'User does not exists.'
   end
 
   has_many :orders, dependent: :destroy
