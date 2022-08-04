@@ -12,6 +12,6 @@ class CommentRepresenter < Representable::Decorator
   property :comment_author, exec_context: :decorator
 
   def comment_author
-    represented.commentable.first_name
+    User.find(represented.user_id).first_name
   end
 end
