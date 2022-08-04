@@ -12,10 +12,10 @@ module Api
       def create
         @comment = Comments::ApiCommentCreatorService.call(comment_params, @commentable, current_user)
 
-        if @comment
-          render json: @comment, status: :created
-        else
+        if @comment.respond_to?(:errors)
           render json: @comment.errors, status: :bad_request
+        else
+          render json: @comment, status: :created
         end
       end
 
