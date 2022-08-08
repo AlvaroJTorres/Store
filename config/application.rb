@@ -23,6 +23,7 @@ module Store
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoloader = :classic
     config.active_storage.variant_processor = :mini_magick
+    config.active_job.queue_adapter = :sidekiq
 
     Rails.application.reloader.to_prepare do
       ActiveStorage::Blob

@@ -10,7 +10,9 @@ module Likes
     end
 
     def call
-      Like.new(product_id: @product_id, user_id: @user.id)
+      like = Like.create(product_id: @product_id, user_id: @user.id)
+      LikesCounterJob.perform_later(@product_id, @user)
+      like
     end
   end
 end

@@ -8,7 +8,11 @@ module Api
 
       def authenticate
         token = JwtEncodeService.call(user_params)
-        render json: { token: }, status: :ok
+        if token
+          render json: { token: }, status: :ok
+        else
+          render json: { error: 'Invalid user' }, status: :unauthorized
+        end
       end
 
       private

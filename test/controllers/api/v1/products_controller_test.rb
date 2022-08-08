@@ -60,9 +60,11 @@ module Api
 
         @token = JSON.parse(@response.body)['token']
 
-        assert_difference('Product.count', -1) do
-          delete "/api/v1/products/#{@product.id}", headers: { "Authorization": "Bearer #{@token}" }
-        end
+        delete "/api/v1/products/#{@product.id}", headers: { "Authorization": "Bearer #{@token}" }
+
+        @product.reload
+
+        assert !@product.deleted_at.nil?
 
         assert_response :no_content
       end

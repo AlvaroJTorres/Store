@@ -4,7 +4,7 @@
 class ProductsQuery
   attr_reader :relation
 
-  def initialize(relation = Product.all)
+  def initialize(relation = Product.where('deleted_at IS NULL'))
     @relation = relation
   end
 

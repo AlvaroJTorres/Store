@@ -15,6 +15,7 @@ gem 'multi_json'
 gem 'pagy'
 gem 'pundit'
 gem 'representable'
+gem 'sidekiq'
 gem 'sprockets', '~> 3.7.2'
 gem 'swagger-blocks'
 
