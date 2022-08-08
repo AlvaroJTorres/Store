@@ -10,7 +10,11 @@ module Api
       def create
         @order_line = OrderLines::ApiOrderLineCreatorService.call(@order, current_user, order_line_params)
 
-        render json: @order_line, status: :created
+        if @order_line.respond_to?(:errors)
+          render json: @order_line.errors, status: :bad_request
+        else
+          render json: @order_line, status: :created
+        end
       end
 
       private

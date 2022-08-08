@@ -17,7 +17,7 @@ class JwtEncodeService < ApplicationService
 
   def encode_token
     current_user = User.find_by(email: @params[:email])
-    if current_user.valid_password?(@params[:password])
+    if current_user.valid_password?(@params[:password]) & !current_user.deleted_at?
       payload = {
         user_id: current_user.id,
         email: current_user.email
@@ -25,7 +25,7 @@ class JwtEncodeService < ApplicationService
 
       JWT.encode payload, nil, 'none'
     else
-      p 'INVALID'
+      false
     end
   end
 end

@@ -22,8 +22,11 @@ module Api
       # Method that responds to the get request to show an specific product
       def show
         @product = Products::ApiProductFinderService.call(params[:id])
-
-        render json: @product
+        if @product
+          render json: @product
+        else
+          render json: { error: 'not-found' }, status: 404
+        end
       end
 
       # Method that respond to the create request to create a new product
@@ -51,7 +54,7 @@ module Api
 
       # Method that responds to the delete request and removes a product from the database
       def destroy
-        Products::ProductDestroyService.call(@product)
+        Products::ApiProductDestroyService.call(@product, current_user)
         render body: nil, status: :no_content
       end
 

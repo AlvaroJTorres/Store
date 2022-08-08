@@ -2,6 +2,7 @@
   <p class="text-2xl"><%= product.name.capitalize %></p>
   <p class="text-xl">$ <%= number_with_precision(product.price, precision: 2) %></p>
   <p>Available: <%= product.stock %></p>
+  <%= image_tag product.avatar.variant(resize_to_limit: [220, 200]) if product.avatar.attached? %>
 
   <div class="flex gap-2">
   <p>Tags:</p>

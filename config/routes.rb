@@ -13,11 +13,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      concern :commentable do
+        resources :comments
+      end
+
       resources :products do
         resources :likes, shallow: true, only: %i[create]
       end
       resources :order_lines
       resources :orders
+      resources :users, concerns: :commentable
       post '/authenticate', to: 'authentication#authenticate'
     end
   end

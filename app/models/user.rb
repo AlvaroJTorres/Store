@@ -8,9 +8,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def active_for_authentication?
+    super and !deleted_at?
+  end
+
+  def inactive_message
+    'User does not exists.'
+  end
+
   has_many :orders, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :first_name, :last_name, :address, presence: true
   validates :email, presence: true, uniqueness: true

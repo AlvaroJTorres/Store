@@ -24,7 +24,7 @@ module OrderLines
 
         OrderLineRepresenter.new(order_line)
       else
-        false
+        order_line_form
       end
     end
   end
