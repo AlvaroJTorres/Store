@@ -1,6 +1,6 @@
-FROM ruby:2.5.1-alpine
+FROM ruby:3.1.1-alpine
 
-ENV BUNDLER_VERSION=2.0.2
+ENV BUNDLER_VERSION=2.3.16
 
 RUN apk add --update --no-cache \
       binutils-gold \
@@ -24,11 +24,10 @@ RUN apk add --update --no-cache \
       openssl \
       pkgconfig \
       postgresql-dev \
-      python \
       tzdata \
       yarn 
 
-RUN gem install bundler -v 2.0.2
+RUN gem install bundler -v 2.3.16
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
@@ -36,10 +35,6 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle config build.nokogiri --use-system-libraries
 
 RUN bundle check || bundle install
-
-COPY package.json yarn.lock ./
-
-RUN yarn install --check-files
 
 COPY . ./ 
 
