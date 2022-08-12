@@ -2,7 +2,7 @@
 
 # Define the Controllers required for the Order endpoints
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show update]
+  before_action :set_order, only: %i[show update checkout]
 
   # Method that responds to the get request to list all the records
   # of orders from a logged user
@@ -30,6 +30,25 @@ class OrdersController < ApplicationController
     else
       render :cart
     end
+  end
+
+  def checkout
+    stripe_line_items = @order.order_lines.map do |order_line|
+      {
+        price: order_line.product.stripe_product_id,
+        quantity: order_line.quantity
+      }
+    end
+
+    @session = Stripe::Checkout::Session.create({
+                                                  customer: current_user.stripe_customer_id,
+                                                  payment_method_types: ['card'],
+                                                  line_items: [stripe_line_items],
+                                                  mode: 'payment',
+                                                  success_url: root_url,
+                                                  cancel_url: cart_url
+                                                })
+    redirect_to @session.url, allow_other_host: true
   end
 
   private
