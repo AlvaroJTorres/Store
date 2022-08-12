@@ -52,4 +52,4 @@ RUN bundle check || bundle install
 
 COPY . $RAILS_ROOT
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+# ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
