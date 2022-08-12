@@ -27,15 +27,29 @@ RUN apk add --update --no-cache \
       tzdata \
       yarn 
 
+ENV WORK_ROOT /var
+ENV RAILS_ROOT $WORK_ROOT/www/
+ENV GEM_HOME $WORK_ROOT/bundle
+ENV BUNDLE_BIN $GEM_HOME/gems/bin
+ENV PATH $GEM_HOME/bin:$BUNDLE_BIN:$PATH
+
 RUN gem install bundler -v 2.3.16
 
-WORKDIR /app
-COPY Gemfile Gemfile.lock ./
+RUN mkdir -p $RAILS_ROOT
+RUN bundle config — path=$GEM_HOME
+
+WORKDIR $RAILS_ROOT
+
+# WORKDIR /app
+COPY Gemfile ./
+COPY Gemfile.lock ./
 
 RUN bundle config build.nokogiri --use-system-libraries
 
 RUN bundle check || bundle install
 
-COPY . ./ 
+# COPY . ./ 
+
+COPY . $RAILS_ROOT
 
 ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]

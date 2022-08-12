@@ -17,6 +17,7 @@ gem 'pundit'
 gem 'representable'
 gem 'sidekiq'
 gem 'sprockets', '~> 3.7.2'
+gem 'stripe'
 gem 'swagger-blocks'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
