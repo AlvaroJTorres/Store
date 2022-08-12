@@ -21,6 +21,12 @@
         <%= link_to "See logs", logs_path %>
       </button>
     <% end %>
+
+    <% if !current_user.nil? %>
+      <button class="flex flex-col p-2 gap-2 border-2 border-slate-300 justify-center items-center text-2xl">
+        <%= link_to "See Transactions", transactions_path %>
+      </button>
+    <% end %>
   </div>
 </div>
 
