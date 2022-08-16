@@ -14,11 +14,15 @@ gem 'jwt'
 gem 'multi_json'
 gem 'pagy'
 gem 'pundit'
+gem 'reform', '>= 2.2.0'
+gem 'reform-rails'
 gem 'representable'
 gem 'sidekiq'
 gem 'sprockets', '~> 3.7.2'
 gem 'stripe'
 gem 'swagger-blocks'
+gem 'trailblazer', '>= 2.1.0'
+gem "trailblazer-rails"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
