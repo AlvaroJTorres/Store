@@ -1,0 +1,33 @@
+<div class="flex flex-col gap-4 items-center">
+  <h1 class="text-4xl">Transactions of Customers</h1>
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Status</th>
+          <th scope="col" class="px-6 py-3">Amount</th>
+          <th scope="col" class="px-6 py-3">Email</th>
+          <th scope="col" class="px-6 py-3">First Name</th>
+          <th scope="col" class="px-6 py-3">Last Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"><%= transaction.id %></td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"><%= transaction.status %></td>
+            <td class="px-6 py-4"><%= transaction.order.total %></td>
+            <td class="px-6 py-4"><%= transaction.user.email %></td>
+            <td class="px-6 py-4"><%= transaction.user.first_name %></td>
+            <td class="px-6 py-4"><%= transaction.user.last_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to "Back", :back, { class: button_style } %>
+</div>

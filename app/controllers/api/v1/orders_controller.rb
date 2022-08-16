@@ -4,6 +4,7 @@ module Api
   module V1
     # Define the Controllers required for the Order endpoints on API
     class OrdersController < ApiController
+      skip_before_action :require_login!, only: %i[webhook]
       before_action :set_order, only: %i[show update]
 
       # Method that responds to the get request to list all the records
@@ -19,6 +20,22 @@ module Api
       def update
         @order = Orders::ApiOrderUpdaterService.call(@order, current_user)
         render json: @order, status: :ok
+      end
+
+      def webhook
+        event = nil
+
+        begin
+          sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+          payload = request.body.read
+          event = Stripe::Webhook.construct_event(payload, sig_header, ENV['ENDPOINT_SECRET'])
+        rescue JSON::ParserError
+          return status 400
+        rescue Stripe::SignatureVerificationError
+          return status 400
+        end
+
+        Orders::WebhookService.call(event)
       end
 
       private

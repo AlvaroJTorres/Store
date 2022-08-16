@@ -3,6 +3,7 @@
 # Class that represents the Model for the User schema
 # Build with Devise gem
 class User < ApplicationRecord
+  after_create :link_to_stripe
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,4 +27,11 @@ class User < ApplicationRecord
   validates :phone, presence: true, numericality: true, length: { is: 9 }
 
   enum role: { customer: 0, admin: 1, support: 2 }
+
+  private
+
+  def link_to_stripe
+    customer = Stripe::Customer.create(email:)
+    update(stripe_customer_id: customer.id)
+  end
 end

@@ -70,6 +70,16 @@ products_data.each do |product_data|
 
   new_product = Product.new(product)
 
+  stripe_product = Stripe::Product.create({name: product_data[:name]})
+
+  stripe_price = Stripe::Price.create({
+    unit_amount: product_data[:price].to_i * 100,
+    currency: 'usd',
+    product: stripe_product.id
+  })
+
+  new_product.stripe_product_id = stripe_price.id
+
   new_product.avatar.attach(io: File.open('public/images/avatar.png'), filename: 'avatar.png')
 
   new_product.save

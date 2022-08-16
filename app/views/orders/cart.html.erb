@@ -28,10 +28,10 @@
     <div>
       <% if @order.id.nil? || @order.order_lines.empty? %>
         <p>Add Products to buy</p>
-      <% elsif current_user&.admin?%>
-        <p>Admin can't buy</p>
+      <% elsif current_user&.customer? %>
+        <%= button_to "Buy now!", checkout_path, data: { turbo: false }, params: {id: @order.id} %>
       <% else %>
-        <%= button_to "Send Order", current_user&.customer? ? order_path(@order) : "", { method: :patch, class: button_style } %>
+        <p>Sign in as customer to buy</p>
       <% end %>
     </div>
   </div>

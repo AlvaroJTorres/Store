@@ -23,7 +23,9 @@ Rails.application.routes.draw do
       resources :order_lines
       resources :orders
       resources :users, concerns: :commentable
+      resources :transactions, only: [:index]
       post '/authenticate', to: 'authentication#authenticate'
+      post '/webhook', to: 'orders#webhook'
     end
   end
 
@@ -36,8 +38,9 @@ Rails.application.routes.draw do
   end
   resources :order_lines
   resources :orders, concerns: :commentable
+  post 'checkout', to: 'orders#checkout'
   resources :logs, only: [:index]
-
+  resources :transactions, only: [:index]
   get 'cart', to: 'orders#cart'
 
   resources :apidocs, only: [:index]

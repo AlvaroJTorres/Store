@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear Customer <%= @customer.first_name %>,</h1>
+    <p>
+      Your order has been successful
+    </p>
+    <p>Date: <%= @order.date %></p>
+    <p>Amount: <%= @order.total %></p>
+      
+    <% @order.order_lines.each do |order_line| %>
+      <p>Product: <%= order_line.product.name %></p>
+      <p>Quantity: <%= order_line.quantity %></p>
+    <% end %>
+
+    <p>Kind regards</p>
+  </body>
+</html>

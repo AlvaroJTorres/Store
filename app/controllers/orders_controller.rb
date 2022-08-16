@@ -2,7 +2,7 @@
 
 # Define the Controllers required for the Order endpoints
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show update]
+  before_action :set_order, only: %i[show update checkout]
 
   # Method that responds to the get request to list all the records
   # of orders from a logged user
@@ -30,6 +30,12 @@ class OrdersController < ApplicationController
     else
       render :cart
     end
+  end
+
+  def checkout
+    @session = Orders::CheckoutService.call(current_user, @order, root_url, cart_url)
+
+    redirect_to @session.url, allow_other_host: true
   end
 
   private
