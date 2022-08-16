@@ -21,4 +21,8 @@ class OrderPolicy < ApplicationPolicy
   def update?
     user&.customer?
   end
+
+  def checkout?
+    user&.customer?
+  end
 end

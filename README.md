@@ -2,18 +2,18 @@
 
 # Store
 
-This repository is also available on: https://challenge-week-five.herokuapp.com/
+This repository is also available on: https://store-challenge-applaudo.herokuapp.com/
 
 ## Install
 
 ### Clone the repository
 
 ```shell
-HTTPS: git clone https://gitlab.com/AlvaroJTorres/week-5-challenge.git
+HTTPS: git clone https://gitlab.com/AlvaroJTorres/week-8-challenge.git
 
 or
 
-SSH: git clone git@gitlab.com:AlvaroJTorres/week-5-challenge.git
+SSH: git clone git@gitlab.com:AlvaroJTorres/week-8-challenge.git
 ```
 
 ### Check your Ruby version
