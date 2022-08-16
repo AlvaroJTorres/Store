@@ -31,12 +31,14 @@ module Api
 
       # Method that respond to the create request to create a new product
       def create
-        @product = Products::ApiProductCreatorService.call(product_params)
-        if @product
-          render json: @product, status: :created
-        else
-          render json: @product.errors, status: :bad_request
-        end
+        # @product = Products::ApiProductCreatorService.call(product_params)
+        # if @product
+        #   render json: @product, status: :created
+        # else
+        #   render json: @product.errors, status: :bad_request
+        # end
+        result = Operations::Product::Create.call(product_params)
+        render json: { data: { product: result[:model] } }
       end
 
       # Method that responds to the update request to check if the user is an admin
