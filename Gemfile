@@ -7,9 +7,12 @@ ruby '3.1.1'
 
 gem 'aws-sdk-s3'
 gem 'devise'
+gem 'doorkeeper', '5.3'
+gem 'doorkeeper-grants_assertion'
 gem 'dotenv-rails'
 gem 'draper'
 gem 'faker'
+gem 'faraday'
 gem 'jwt'
 gem 'multi_json'
 gem 'pagy'
@@ -22,7 +25,7 @@ gem 'sprockets', '~> 3.7.2'
 gem 'stripe'
 gem 'swagger-blocks'
 gem 'trailblazer', '>= 2.1.0'
-gem "trailblazer-rails"
+gem 'trailblazer-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
