@@ -22,7 +22,7 @@ admin_data = {
   last_name: 'Torres',
   address: Faker::Address.street_address,
   phone: Faker::PhoneNumber.subscriber_number(length: 9),
-  role: 1
+  role: 1,
 }
 
 User.create(admin_data)
@@ -50,6 +50,18 @@ User.create(support_data)
   }
   User.create(customer_data)
 end
+
+# facebook_customer_data = {
+#     email: "bluelight3001@hotmail.com",
+#     password: '123456',
+#     first_name: "Alvaro Julian",
+#     last_name: "Torres Malla",
+#     address: Faker::Address.street_address,
+#     phone: Faker::PhoneNumber.subscriber_number(length: 9),
+#     facebook_id: "5614316765255774"
+# }
+
+# User.create(facebook_customer_data)
 puts 'Finished seeding users'
 
 puts 'Seeding tags'
