@@ -8,6 +8,7 @@ class ApiController < ActionController::API
   include Pundit::Authorization
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include Pagy::Backend
+  include ErrorHandler
 
   # Callback that defines the parameters to be accepted by the Devise gem when
   # sign_up and update account information
@@ -16,11 +17,11 @@ class ApiController < ActionController::API
   rescue_from Pundit::NotAuthorizedError, with: :render_unauthorized
 
   def require_login!
-    authenticate_token || render_unauthorized
+    authenticate_token || doorkeeper_authenticate || render_unauthorized
   end
 
   def current_user
-    @current_user = authenticate_token
+    @current_user = authenticate_token || doorkeeper_authenticate
   end
 
   private
@@ -34,5 +35,11 @@ class ApiController < ActionController::API
     authenticate_with_http_token do |token, _options|
       JwtDecodeService.call(token)
     end
+  rescue
+    false
+  end
+
+  def doorkeeper_authenticate
+    User.find_by(id: doorkeeper_token[:resource_owner_id])
   end
 end
