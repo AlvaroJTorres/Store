@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  use_doorkeeper
   root 'products#index'
 
   devise_for :users, controllers: { sessions: 'sessions' }
