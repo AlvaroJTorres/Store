@@ -13,5 +13,6 @@ module Forms
     
         validates :email, :password, :first_name, :last_name, :address, :phone, presence: true
         validates :role, inclusion: { in: [0, 2] }
+        validates_uniqueness_of :email
     end
 end
