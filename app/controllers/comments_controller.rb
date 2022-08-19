@@ -8,14 +8,16 @@ class CommentsController < ApplicationController
 
   # Method that responds to the create request for a new comment
   def create
-    flash[:alert] = "Comment wasn't created" unless Operations::CommentOperations::Create.call(params: comment_params, commentable: @commentable, user: current_user)
+    result = Operations::CommentOperations::Create.call(params: comment_params, commentable: @commentable, user: current_user)
+    flash[:alert] = "Comment wasn't created" unless result.success?
 
     redirect_to @commentable
   end
 
   # Method that responds to the update request for a comment
   def update
-    flash[:alert] = "Comment wasn't approved" unless Operations::CommentOperations::Update.call(params: params[:id], commentable: @commentable)
+    result = Operations::CommentOperations::Update.call(params: params[:id], commentable: @commentable)
+    flash[:alert] = "Comment wasn't approved" unless result.success?
 
     redirect_to @commentable
   end

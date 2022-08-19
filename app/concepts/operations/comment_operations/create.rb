@@ -19,7 +19,8 @@ module Operations
             end
 
             def validations_errors!(options, **)
-                raise CustomError.new(options[:form].errors.messages)
+                # raise CustomError.new(options[:form].errors.messages)
+                false
             end
 
             def save_model(options, params:, user:, commentable:, **)

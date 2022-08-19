@@ -15,7 +15,8 @@ module Operations
         end
   
         def validations_errors!(options, **)
-          raise CustomError.new(options[:form].errors.messages)
+          # raise CustomError.new(nil, nil, options[:form].errors.messages)
+          false
         end
 
         def new_or_existing_product(options, order:, params:, **)

@@ -8,7 +8,8 @@ class OrderLinesController < ApplicationController
 
   # Method that responds to the create request for a new order_line
   def create
-    if Operations::OrderLineOperations::Create.call(params: order_line_params, order: @order)
+    result = Operations::OrderLineOperations::Create.call(params: order_line_params, order: @order)
+    if result.success?
       session[:order_id] = @order.id
 
       redirect_to cart_path
@@ -22,7 +23,8 @@ class OrderLinesController < ApplicationController
   # Method that responds to the update request to change the quantity value
   # of an existing order_line
   def update
-    flash[:warning] = 'Not enough stock' unless Operations::OrderLineOperations::Update.call(order_line: @order_line, params: order_line_params[:quantity])
+    result =  Operations::OrderLineOperations::Update.call(order_line: @order_line, params: order_line_params)
+    flash[:warning] = 'Not enough stock' unless result.success?
     redirect_to cart_path
   end
 

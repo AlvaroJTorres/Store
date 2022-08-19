@@ -26,7 +26,8 @@ class ProductsController < ApplicationController
 
   # Method that respond to the create request to create a new product
   def create
-    if Operations::ProductOperations::Create.call(params: product_params)
+    result = Operations::ProductOperations::Create.call(params: product_params)
+    if result.success?
       redirect_to products_path
     else
       render :new
@@ -39,7 +40,8 @@ class ProductsController < ApplicationController
   # Method that responds to the update request to check if the user is an admin
   # and changes the stock and price params
   def update
-    if Operations::ProductOperations::Update.call(params: permitted_attributes(@product).merge(id: params[:id]), user: current_user)
+    result = Operations::ProductOperations::Update.call(params: permitted_attributes(@product).merge(id: params[:id]), user: current_user)
+    if result.success?
       redirect_to products_path
     else
       render :edit
