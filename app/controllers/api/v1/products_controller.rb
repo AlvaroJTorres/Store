@@ -12,51 +12,36 @@ module Api
       # Method that responds to the get request to list all the records
       # of products
       def index
-        # @pagy, @records = Products::ApiProductIndexService.call(query_params)
-        @products = Products::ProductIndexService.call(query_params)
-        @pagy, @records = pagy(@products, items: 10)
+        @products = Operations::ProductOperations::ApiIndex.call(params: query_params)
+        @pagy, @records = pagy(@products[:model], items: 10)
         @records = ProductRepresenter.for_collection.new(@records)
         render json: { data: @records }.merge!(meta: { pagination: pagy_headers_hash(@pagy) }), status: :ok
       end
 
       # Method that responds to the get request to show an specific product
       def show
-        @product = Products::ApiProductFinderService.call(params[:id])
-        if @product
-          render json: @product
-        else
-          render json: { error: 'not-found' }, status: 404
-        end
+        result = Operations::ProductOperations::ApiShow.call(params: params[:id])
+        render json: { data: { product: result[:model] } }
       end
 
       # Method that respond to the create request to create a new product
       def create
-        # @product = Products::ApiProductCreatorService.call(product_params)
-        # if @product
-        #   render json: @product, status: :created
-        # else
-        #   render json: @product.errors, status: :bad_request
-        # end
-        result = Operations::Product::Create.call(product_params)
-        render json: { data: { product: result[:model] } }
+        result = Operations::ProductOperations::ApiCreate.call(params: product_params)
+        render json: { data: { product: result[:model] } }, status: :created
       end
 
       # Method that responds to the update request to check if the user is an admin
       # and changes the stock and price params
       def update
-        @product = Products::ApiProductUpdaterService.call(@product,
-                                                           permitted_attributes(@product).merge(id: params[:id]),
-                                                           current_user)
-        if @product
-          render json: @product, status: :ok
-        else
-          render json: @product.errors, status: :bad_request
-        end
+        result = Operations::ProductOperations::ApiUpdate.call(
+          params: permitted_attributes(@product).merge(id: params[:id]), user: current_user
+        )
+        render json: { data: { product: result[:model] } }
       end
 
       # Method that responds to the delete request and removes a product from the database
       def destroy
-        Products::ApiProductDestroyService.call(@product, current_user)
+        Operations::ProductOperations::ApiDelete.call(params: params[:id], user: current_user)
         render body: nil, status: :no_content
       end
 

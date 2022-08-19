@@ -10,25 +10,19 @@ module Api
 
       # Method that responds to the create request for a new comment
       def create
-        @comment = Comments::ApiCommentCreatorService.call(comment_params, @commentable, current_user)
-
-        if @comment.respond_to?(:errors)
-          render json: @comment.errors, status: :bad_request
-        else
-          render json: @comment, status: :created
-        end
+        result = Operations::CommentOperations::ApiCreate.call(params: comment_params, commentable: @commentable, user: current_user)
+        render json: { data: { comment: result[:model] } }, status: :created
       end
 
       # Method that responds to the update request for a comment
       def update
-        updated_comment = Comments::ApiCommentUpdaterService.call(@comment)
-
-        render json: updated_comment
+        result = Operations::CommentOperations::ApiUpdate.call(params: params[:id], commentable: @commentable)
+        render json: { data: { comment: result[:model] } }
       end
 
       # Method that responds to the destroy request for a comment
       def destroy
-        Comments::CommentDestroyService.call(@comment)
+        Operations::CommentOperations::ApiDelete.call(params: params[:id], commentable: @commentable)
         render body: nil, status: :no_content
       end
 

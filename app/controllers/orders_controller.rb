@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
   # Method that responds to the get request to list all the records
   # of orders from a logged user
   def index
-    @orders = Orders::OrderIndexService.call(current_user)
+    result = Operations::OrderOperations::Index.call(user: current_user)
+    @orders = result[:model]
   end
 
   # Method that responds to the get request to show an specific order
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
   # adds the user doing the order, the date of the order and changes its status
   # to recieved so its no longer show on the cart, and delete its from the session
   def update
-    if Orders::OrderUpdaterService.call(@order, current_user)
+    if Operations::OrderOperations::Update.call(order: @order, user: current_user)
       session.delete(:order_id)
       redirect_to products_path
     else
@@ -45,6 +46,7 @@ class OrdersController < ApplicationController
   end
 
   def set_order
-    @order = authorize Orders::OrderFinderService.call(params[:id])
+    result = Operations::OrderOperations::Show.call(params: params[:id])
+    @order = authorize result[:model]
   end
 end

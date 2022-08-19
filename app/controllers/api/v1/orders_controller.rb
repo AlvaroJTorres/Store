@@ -10,16 +10,16 @@ module Api
       # Method that responds to the get request to list all the records
       # of orders from a logged user
       def index
-        @orders = Orders::ApiOrderIndexService.call(current_user)
-        render json: @orders, status: :ok
+        result = Operations::OrderOperations::ApiIndex.call(user: current_user)
+        render json: { data: { order: result[:model] } }
       end
 
       # Method that responds to the update request to close an order from a cart
       # adds the user doing the order, the date of the order and changes its status
       # to recieved so its no longer show on the cart, and delete its from the session
       def update
-        @order = Orders::ApiOrderUpdaterService.call(@order, current_user)
-        render json: @order, status: :ok
+        result = Operations::OrderOperations::ApiUpdate.call(params: params[:id], user: current_user)
+        render json: { data: { order: result[:model] } }
       end
 
       def webhook

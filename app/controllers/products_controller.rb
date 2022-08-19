@@ -9,12 +9,14 @@ class ProductsController < ApplicationController
   # Method that responds to the get request to list all the records
   # of products
   def index
-    @products = Products::ProductIndexService.call(query_params)
+    result = Operations::ProductOperations::Index.call(params: query_params)
+    @products = result[:model]
   end
 
   # Method that responds to the get request to show an specific product
   def show
-    @product = Products::ProductFinderService.call(params[:id])
+    result = Operations::ProductOperations::Show.call(params: params[:id])
+    @product = result[:model]
   end
 
   # Method that allows the render of the new form for a new product
@@ -24,7 +26,7 @@ class ProductsController < ApplicationController
 
   # Method that respond to the create request to create a new product
   def create
-    if Products::ProductCreatorService.call(product_params)
+    if Operations::ProductOperations::Create.call(params: product_params)
       redirect_to products_path
     else
       render :new
@@ -37,8 +39,7 @@ class ProductsController < ApplicationController
   # Method that responds to the update request to check if the user is an admin
   # and changes the stock and price params
   def update
-    if Products::ProductUpdaterService.call(@product, permitted_attributes(@product).merge(id: params[:id]),
-                                            current_user)
+    if Operations::ProductOperations::Update.call(params: permitted_attributes(@product).merge(id: params[:id]), user: current_user)
       redirect_to products_path
     else
       render :edit
@@ -47,7 +48,7 @@ class ProductsController < ApplicationController
 
   # Method that responds to the delete request and removes a product from the database
   def destroy
-    Products::ProductDestroyService.call(@product)
+    Operations::ProductOperations::Delete.call(params: params[:id], user: current_user)
 
     redirect_to products_path
   end
