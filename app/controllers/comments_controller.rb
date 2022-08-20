@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 
   # Method that responds to the create request for a new comment
   def create
-    result = Operations::CommentOperations::Create.call(params: comment_params, commentable: @commentable, user: current_user)
+    result = Operations::CommentOperations::Create.call(params: comment_params, commentable: @commentable,
+                                                        user: current_user)
     flash[:alert] = "Comment wasn't created" unless result.success?
 
     redirect_to @commentable

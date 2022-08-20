@@ -2,6 +2,7 @@
 
 module Operations
   module ProductOperations
+    # Operation to index Products on API
     class ApiIndex < Trailblazer::Operation
       step :products_scope
 

@@ -10,7 +10,8 @@ module Api
 
       # Method that responds to the create request for a new comment
       def create
-        result = Operations::CommentOperations::ApiCreate.call(params: comment_params, commentable: @commentable, user: current_user)
+        result = Operations::CommentOperations::ApiCreate.call(params: comment_params, commentable: @commentable,
+                                                               user: current_user)
         render json: { data: { comment: result[:model] } }, status: :created
       end
 

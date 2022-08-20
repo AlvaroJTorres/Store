@@ -35,7 +35,7 @@ class ApiController < ActionController::API
     authenticate_with_http_token do |token, _options|
       JwtDecodeService.call(token)
     end
-  rescue
+  rescue StandardError
     false
   end
 

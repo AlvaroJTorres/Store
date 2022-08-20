@@ -2,6 +2,7 @@
 
 module Operations
   module ProductOperations
+    # Operation to create Products on API
     class ApiCreate < Trailblazer::Operation
       pass :new_model
       step :validate_product

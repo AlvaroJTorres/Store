@@ -2,6 +2,7 @@
 
 module Operations
   module ProductOperations
+    # Operation to show Products on API
     class ApiShow < Trailblazer::Operation
       pass :find_product
       step :representer

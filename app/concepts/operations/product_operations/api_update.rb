@@ -2,6 +2,7 @@
 
 module Operations
   module ProductOperations
+    # Operation to update Products on API
     class ApiUpdate < Trailblazer::Operation
       pass :find_product
       step :validate_product

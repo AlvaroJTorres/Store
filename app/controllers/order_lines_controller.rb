@@ -23,7 +23,7 @@ class OrderLinesController < ApplicationController
   # Method that responds to the update request to change the quantity value
   # of an existing order_line
   def update
-    result =  Operations::OrderLineOperations::Update.call(order_line: @order_line, params: order_line_params)
+    result = Operations::OrderLineOperations::Update.call(order_line: @order_line, params: order_line_params)
     flash[:warning] = 'Not enough stock' unless result.success?
     redirect_to cart_path
   end

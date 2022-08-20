@@ -2,6 +2,7 @@
 
 module Operations
   module ProductOperations
+    # Operation to delete Products on API
     class ApiDelete < Trailblazer::Operation
       pass :find_product
       step :delete_product

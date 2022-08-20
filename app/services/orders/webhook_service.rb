@@ -29,7 +29,8 @@ module Orders
       order = customer.orders.last
       Orders::OrderUpdaterService.call(order, customer)
       # Transactions::TransactionCreatorService.call('successful', customer, order)
-      Operations::TransactionOperations::Create.call(params: {status: 'successful', user_id: customer.id, order_id: order.id})
+      Operations::TransactionOperations::Create.call(params: { status: 'successful', user_id: customer.id,
+                                                               order_id: order.id })
       OrderMailer.with(customer:, order:).successful_purchase.deliver_later
     end
 
@@ -38,7 +39,8 @@ module Orders
       customer = User.where('deleted_at IS NULL').find_by(stripe_customer_id: customer_id)
       order = customer.orders.last
       # Transactions::TransactionCreatorService.call('failed', customer, order)
-      Operations::TransactionOperations::Create.call(params: {status: 'failed', user_id: customer.id, order_id: order.id})
+      Operations::TransactionOperations::Create.call(params: { status: 'failed', user_id: customer.id,
+                                                               order_id: order.id })
       OrderMailer.with(customer:).failed_purchase.deliver_later
     end
   end

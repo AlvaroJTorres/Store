@@ -1,11 +1,14 @@
-module Operations
-    module TransactionOperations
-        class Create < Trailblazer::Operation
-            step :create_transaction
+# frozen_string_literal: true
 
-            def create_transaction(options, params:, **)
-                Transaction.create(params)
-            end
-        end
+module Operations
+  module TransactionOperations
+    # Operation to create Transactions
+    class Create < Trailblazer::Operation
+      step :create_transaction
+
+      def create_transaction(_options, params:, **)
+        Transaction.create(params)
+      end
     end
+  end
 end

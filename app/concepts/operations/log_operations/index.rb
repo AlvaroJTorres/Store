@@ -1,11 +1,14 @@
-module Operations
-    module LogOperations
-        class Index < Trailblazer::Operation
-            step :logs
+# frozen_string_literal: true
 
-            def logs(options, **)
-                options[:model] = Log.all
-            end
-        end
+module Operations
+  module LogOperations
+    # Operation to index logs
+    class Index < Trailblazer::Operation
+      step :logs
+
+      def logs(options, **)
+        options[:model] = Log.all
+      end
     end
+  end
 end
