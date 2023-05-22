@@ -20,3 +20,12 @@ Layout/LineLength:
     - "test/**/**"
 Metrics/MethodLength:
   Max: 15
+Style/SignalException:
+  Exclude:
+    - "app/concepts/operations/**/**"
+Lint/UnreachableCode:
+  Exclude:
+    - "app/concepts/operations/**/**"
+Metrics/ParameterLists:
+  Exclude:
+    - "app/errors/**"
