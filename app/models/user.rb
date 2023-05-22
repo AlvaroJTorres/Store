@@ -22,9 +22,12 @@ class User < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
-  validates :first_name, :last_name, :address, presence: true
+  # validates :first_name, :last_name, :address, presence: true
+  # validates :email, presence: true, uniqueness: true
+  # validates :phone, presence: true, numericality: true, length: { is: 9 }
+
+  validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone, presence: true, numericality: true, length: { is: 9 }
 
   enum role: { customer: 0, admin: 1, support: 2 }
 

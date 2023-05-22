@@ -8,9 +8,9 @@ module Api
 
       # Method that responds to the create request for a new like
       def create
-        @like = Likes::ApiLikeCreatorService.call(params[:product_id], current_user)
+        result = Operations::LikeOperations::ApiCreate.call(params: params[:product_id], user: current_user)
 
-        render json: @like, status: :created
+        render json: { data: { like: result[:model] } }, status: :created
       end
 
       private

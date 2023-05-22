@@ -8,7 +8,8 @@ class OrderLinesController < ApplicationController
 
   # Method that responds to the create request for a new order_line
   def create
-    if OrderLines::OrderLineCreatorService.call(@order, order_line_params)
+    result = Operations::OrderLineOperations::Create.call(params: order_line_params, order: @order)
+    if result.success?
       session[:order_id] = @order.id
 
       redirect_to cart_path
@@ -22,15 +23,14 @@ class OrderLinesController < ApplicationController
   # Method that responds to the update request to change the quantity value
   # of an existing order_line
   def update
-    flash[:warning] = 'Not enough stock' unless OrderLines::OrderLineUpdaterService.call(@order_line,
-                                                                                         order_line_params[:quantity])
-
+    result = Operations::OrderLineOperations::Update.call(order_line: @order_line, params: order_line_params)
+    flash[:warning] = 'Not enough stock' unless result.success?
     redirect_to cart_path
   end
 
   # Method that responds to the delete request to remove an order_line from the cart
   def destroy
-    OrderLines::OrderLineDestroyService.call(@order_line)
+    Operations::OrderLineOperations::Delete.call(order_line: @order_line)
 
     redirect_to cart_path
   end
@@ -50,6 +50,7 @@ class OrderLinesController < ApplicationController
   end
 
   def set_order_line
-    @order_line = OrderLines::OrderLineFinderService.call(params[:id])
+    result = Operations::OrderLineOperations::Show.call(params: params[:id])
+    @order_line = result[:model]
   end
 end

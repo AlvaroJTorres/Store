@@ -8,13 +8,8 @@ module Api
       before_action :pundit_authorize
 
       def create
-        @order_line = OrderLines::ApiOrderLineCreatorService.call(@order, current_user, order_line_params)
-
-        if @order_line.respond_to?(:errors)
-          render json: @order_line.errors, status: :bad_request
-        else
-          render json: @order_line, status: :created
-        end
+        result = Operations::OrderLineOperations::ApiCreate.call(params: order_line_params, order: @order)
+        render json: { data: { order_line: result[:model] } }, status: :created
       end
 
       private
