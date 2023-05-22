@@ -8,8 +8,8 @@ module Api
       # Method that responds to the get request to list all the records
       # from the log database
       def index
-        @transactions = Transactions::ApiTransactionIndexService.call(current_user)
-        render json: @transactions, status: :ok
+        result = Operations::TransactionOperations::ApiIndex.call(user: current_user)
+        render json: { data: { transactions: result[:model] } }
       end
 
       private

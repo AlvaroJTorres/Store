@@ -8,28 +8,18 @@ module Api
       before_action :set_user, only: %i[destroy]
 
       def show
-        @user = Users::UserFinderService.call(params[:id])
-
-        if @user
-          render json: @user
-        else
-          render json: { error: 'not-found' }, status: 404
-        end
+        result = Operations::UserOperations::ApiShow.call(params: params[:id])
+        render json: { data: { user: result[:model] } }
       end
 
       # Method that responds to the create request for a new User
       def create
-        @user = Users::ApiUserCreatorService.call(user_params)
-
-        if @user
-          render json: @user, status: :created
-        else
-          render json: @user.errors, status: :bad_request
-        end
+        result = Operations::UserOperations::ApiCreate.call(params: user_params)
+        render json: { data: { user: result[:model] } }, status: :created
       end
 
       def destroy
-        Users::ApiUserDestroyService.call(@user)
+        Operations::UserOperations::ApiDelete.call(params: params[:id])
         render body: nil, status: :no_content
       end
 
